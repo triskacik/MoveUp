@@ -19,7 +19,7 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Grid.Row="0" Text="{x:Static resources:Texts.SumView_Header}" TextColor="Black" FontSize="25" FontFamily="montserrat-regular">
+            <Label Grid.Row="0" Text="{x:Static resources:Texts.SumView_Header}" TextColor="Black" FontSize="25" FontFamily="montserrat-bold">
                 <Label.Padding>
                     <OnPlatform x:TypeArguments="Thickness">
                         <On Platform="Android" Value="20, 10, 20, 10" />
@@ -30,125 +30,97 @@
 
             <Label Grid.Row="1" BackgroundColor="#BEBEBE" HeightRequest="1"/>
 
-            <ScrollView Grid.Row="2">
+            <ScrollView Grid.Row="2" Padding="0, 20, 0, 20">
                 <StackLayout Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Spacing="20">
-                    
-                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="20" Padding="20, 10, 20, 10" >
-                        <StackLayout Orientation="Horizontal" Spacing="20">
 
-                            <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
-                            
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                    <Frame BackgroundColor="White" HasShadow="False" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Image Source="flame" Aspect="AspectFit" HeightRequest="20" VerticalOptions="Start"/>                          
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Steps}" FontSize="17" TextColor="Red" FontFamily="montserrat-regular"/>
 
-                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Texts.SumView_Steps}" FontSize="17" TextColor="Red" FontAttributes="Bold"/>
-                                <Label Grid.Row="1" Grid.Column="0" Text="4 254" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <Label Text="4 254" FontSize="20" TextColor="Black" FontFamily="montserrat-bold"/>
 
-                                <BoxView CornerRadius="20" BackgroundColor="#BEBEBE" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
+                                        <Label BackgroundColor="#BEBEBE" WidthRequest="3"/>
 
-                                <StackLayout Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
-                                    <Label Text="10 000" TextColor="Gray" FontSize="20" FontAttributes="Bold"/>
-                                    <Label Text="{x:Static resources:Texts.SumView_Target}" TextColor="Gray" FontSize="15" FontAttributes="Bold" VerticalOptions="End"/>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="10 000" TextColor="Gray" FontSize="20" FontFamily="montserrat-bold"/>
+                                            <Label Text="{x:Static resources:Texts.SumView_Target}" TextColor="Gray" FontSize="15" FontFamily="montserrat-regular" VerticalOptions="End"/>
+                                        </StackLayout>
+                                    </StackLayout>
                                 </StackLayout>
-                            </Grid>
-                        </StackLayout>
+                                <Image Source="arrow" Aspect="AspectFit" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Button/>
+                        </Grid>
                     </Frame>
 
-                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="20" Padding="20, 10, 20, 10" >
-                        <StackLayout Orientation="Horizontal" Spacing="20">
+                    <Frame BackgroundColor="White" HasShadow="False" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Image Source="flame" Aspect="AspectFit" HeightRequest="20" VerticalOptions="Start"/>                          
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Walking}" FontSize="17" TextColor="Red" FontFamily="montserrat-regular"/>
 
-                            <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
-                            
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
+                                    <StackLayout Orientation="Horizontal" Spacing="20">
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="3,54" FontSize="20" TextColor="Black" FontFamily="montserrat-bold"/>
+                                            <Label Text="{x:Static resources:Texts.SumView_Km}" FontSize="15" TextColor="Gray" FontFamily="montserrat-regular" VerticalOptions="End"/>
+                                        </StackLayout>
+                                        
+                                        <Label BackgroundColor="#BEBEBE" WidthRequest="3"/>
 
-                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Texts.SumView_Walking}" FontSize="17" TextColor="Red" FontAttributes="Bold"/>
-
-                                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                                    <Label Text="3,54" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
-                                    <Label Text="{x:Static resources:Texts.SumView_Km}" FontSize="15" TextColor="Gray" FontAttributes="Bold" VerticalOptions="End"/>
-                                </StackLayout>
-
-                                <BoxView CornerRadius="20" BackgroundColor="#BEBEBE" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
-
-                                <StackLayout Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Orientation="Horizontal">
-                                    <Label Text="10" TextColor="Gray" FontSize="20" FontAttributes="Bold"/>
-                                    <Label Text="{x:Static resources:Texts.SumView_Target}" TextColor="Gray" FontSize="15" FontAttributes="Bold" VerticalOptions="End"/>
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
+                                        <StackLayout Orientation="Horizontal">
+                                            <Label Text="10" TextColor="Gray" FontSize="20" FontFamily="montserrat-bold"/>
+                                            <Label Text="{x:Static resources:Texts.SumView_Target}" TextColor="Gray" FontSize="15" FontFamily="montserrat-regular" VerticalOptions="End"/>
+                                        </StackLayout>
+                                    </StackLayout>
+                                </StackLayout>        
+                                <Image Source="arrow" Aspect="AspectFit" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Button/>
+                        </Grid> 
                     </Frame>
 
-                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="20" Padding="20, 10, 20, 10" >
-                        <StackLayout Orientation="Horizontal" Spacing="20">
-
-                            <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
-                            
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Texts.SumView_Floors}" FontSize="17" TextColor="Red" FontAttributes="Bold"/>
-                                <Label Grid.Row="1" Grid.Column="0" Text="6" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
-                            </Grid>
-                        </StackLayout>
+                    <Frame BackgroundColor="White" HasShadow="False" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Image Source="flame" Aspect="AspectFit" HeightRequest="20" VerticalOptions="Start"/>                          
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Floors}" FontSize="17" TextColor="Red" FontFamily="montserrat-regular"/>
+                                    <Label Text="6" FontSize="20" TextColor="Black" FontFamily="montserrat-bold"/>
+                                </StackLayout>         
+                                <Image Source="arrow" Aspect="AspectFit" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Button/>
+                        </Grid>
                     </Frame>
 
-                    <Frame BackgroundColor="White" HasShadow="True" CornerRadius="20" Padding="20, 10, 20, 10" >
-                        <StackLayout Orientation="Horizontal" Spacing="20">
+                    <Frame BackgroundColor="White" HasShadow="False" CornerRadius="20" Padding="10">
+                        <Grid>
+                            <StackLayout Orientation="Horizontal" Spacing="15">
+                                <Image Source="flame" Aspect="AspectFit" HeightRequest="20" VerticalOptions="Start"/>                          
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Calories}" FontSize="17" TextColor="Red" FontFamily="montserrat-regular"/>
 
-                            <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
-                            
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
-                                <Grid.RowDefinitions>
-                                    <RowDefinition Height="Auto"/>
-                                    <RowDefinition Height="Auto"/>
-                                </Grid.RowDefinitions>
-                                <Grid.ColumnDefinitions>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="Auto"/>
-                                    <ColumnDefinition Width="*"/>
-                                </Grid.ColumnDefinitions>
-
-                                <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Texts.SumView_Calories}" FontSize="17" TextColor="Red" FontAttributes="Bold"/>
-
-                                <StackLayout Grid.Row="1" Grid.Column="0" Orientation="Horizontal">
-                                    <Label Text="235" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
-                                    <Label Text="{x:Static resources:Texts.SumView_Kcal}" FontSize="15" TextColor="Gray" FontAttributes="Bold" VerticalOptions="End"/>
-                                </StackLayout>
-                            </Grid>
-                        </StackLayout>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="235" FontSize="20" TextColor="Black" FontFamily="montserrat-bold"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Kcal}" FontSize="15" TextColor="Gray" FontFamily="montserrat-regular" VerticalOptions="End"/>
+                                    </StackLayout>
+                                </StackLayout>          
+                                <Image Source="arrow" Aspect="AspectFit" HeightRequest="40" HorizontalOptions="EndAndExpand"/>
+                            </StackLayout>
+                            <Button/>
+                        </Grid>    
                     </Frame>
 
-                    <Label Text="{x:Static resources:Texts.SumView_Map}" TextColor="Black" FontSize="25" FontAttributes="Bold"/>
+                    <Label Text="{x:Static resources:Texts.SumView_Map}" TextColor="Black" FontSize="25" FontFamily="montserrat-bold"/>
 
-                    <Frame BorderColor="#BEBEBE" HasShadow="True" Padding="0" HeightRequest="500">
-                        <map:Map MapType="Street" HasZoomEnabled="True"  IsShowingUser="True">
+                    <map:Map MapType="Street" HasZoomEnabled="True"  IsShowingUser="True" HeightRequest="500">
                     </map:Map>
-                    </Frame>
+
                 </StackLayout>
             </ScrollView>
 
@@ -170,22 +142,22 @@
                 
                 <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="summary" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Summary" TextColor="#007AFF" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Summary" TextColor="#007AFF" FontSize="10" FontFamily="montserrat-bold"/>
                 </StackLayout>
-                <Button Grid.Column="0" IsVisible="False" IsEnabled="False"/>
+                <Button Grid.Column="0" IsEnabled="False"/>
 
                 
                 <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="flame_black" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Activities" TextColor="#BEBEBE" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Activities" TextColor="#BEBEBE" FontSize="10" FontFamily="montserrat-bold"/>
                 </StackLayout>
-                <Button Grid.Column="1" IsVisible="False" IsEnabled="True"/>
+                <Button Grid.Column="1" IsEnabled="True"/>
 
                 <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="friends" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Friends" TextColor="#BEBEBE" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Friends" TextColor="#BEBEBE" FontSize="10" FontFamily="montserrat-bold"/>
                 </StackLayout>
-                <Button Grid.Column="2" IsVisible="False" IsEnabled="True"/>
+                <Button Grid.Column="2" IsEnabled="True"/>
             </Grid>
         </Grid>
     </ContentPage.Content>
