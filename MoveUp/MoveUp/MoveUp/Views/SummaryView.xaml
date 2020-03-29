@@ -10,7 +10,7 @@
     
     <ContentPage.Content>
   
-        <Grid BackgroundColor="WhiteSmoke" RowSpacing="0">
+        <Grid BackgroundColor="#F1F1F1" RowSpacing="0" >
             <Grid.RowDefinitions>
                 <RowDefinition Height="Auto"/>
                 <RowDefinition Height="Auto"/>
@@ -19,9 +19,16 @@
                 <RowDefinition Height="Auto"/>
             </Grid.RowDefinitions>
 
-            <Label Padding="20, 10, 20, 10" Grid.Row="0" Text="{x:Static resources:Texts.SumView_Header}" TextColor="Black" FontSize="25" FontAttributes="Bold"/>
+            <Label Grid.Row="0" Text="{x:Static resources:Texts.SumView_Header}" TextColor="Black" FontSize="25" FontFamily="montserrat-regular">
+                <Label.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="20, 10, 20, 10" />
+                        <On Platform="iOS" Value="20, 50, 20, 10" />
+                    </OnPlatform>
+                </Label.Padding>
+            </Label>
 
-            <Label Grid.Row="1" BackgroundColor="Gray" HeightRequest="1"/>
+            <Label Grid.Row="1" BackgroundColor="#BEBEBE" HeightRequest="1"/>
 
             <ScrollView Grid.Row="2">
                 <StackLayout Padding="20" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand" Spacing="20">
@@ -31,7 +38,7 @@
 
                             <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
                             
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="30">
+                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -45,7 +52,7 @@
                                 <Label Grid.Row="0" Grid.Column="0" Text="{x:Static resources:Texts.SumView_Steps}" FontSize="17" TextColor="Red" FontAttributes="Bold"/>
                                 <Label Grid.Row="1" Grid.Column="0" Text="4 254" FontSize="20" TextColor="Black" FontAttributes="Bold"/>
 
-                                <BoxView CornerRadius="20" BackgroundColor="Gray" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
+                                <BoxView CornerRadius="20" BackgroundColor="#BEBEBE" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
 
                                 <StackLayout Grid.Row="1" Grid.Column="2" Orientation="Horizontal" HorizontalOptions="Center">
                                     <Label Text="10 000" TextColor="Gray" FontSize="20" FontAttributes="Bold"/>
@@ -60,7 +67,7 @@
 
                             <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
                             
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="30">
+                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -78,7 +85,7 @@
                                     <Label Text="{x:Static resources:Texts.SumView_Km}" FontSize="15" TextColor="Gray" FontAttributes="Bold" VerticalOptions="End"/>
                                 </StackLayout>
 
-                                <BoxView CornerRadius="20" BackgroundColor="Gray" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
+                                <BoxView CornerRadius="20" BackgroundColor="#BEBEBE" WidthRequest="3" Grid.Column="1" Grid.RowSpan="2"/>
 
                                 <StackLayout Grid.Row="1" Grid.Column="2" HorizontalOptions="Center" Orientation="Horizontal">
                                     <Label Text="10" TextColor="Gray" FontSize="20" FontAttributes="Bold"/>
@@ -93,7 +100,7 @@
 
                             <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
                             
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="30">
+                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -115,7 +122,7 @@
 
                             <Image Source="flame" Aspect="AspectFit" HeightRequest="30"/>
                             
-                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="30">
+                            <Grid Padding="0" RowSpacing="0" ColumnSpacing="20">
                                 <Grid.RowDefinitions>
                                     <RowDefinition Height="Auto"/>
                                     <RowDefinition Height="Auto"/>
@@ -138,39 +145,47 @@
 
                     <Label Text="{x:Static resources:Texts.SumView_Map}" TextColor="Black" FontSize="25" FontAttributes="Bold"/>
 
-                    <map:Map MapType="Street" HasZoomEnabled="True" HeightRequest="500" IsShowingUser="True">
+                    <Frame BorderColor="#BEBEBE" HasShadow="True" Padding="0" HeightRequest="500">
+                        <map:Map MapType="Street" HasZoomEnabled="True"  IsShowingUser="True">
                     </map:Map>
-                
+                    </Frame>
                 </StackLayout>
             </ScrollView>
 
-            <Label Grid.Row="3" BackgroundColor="Gray" HeightRequest="1" Padding="0"/>
+            <Label Grid.Row="3" BackgroundColor="#BEBEBE" HeightRequest="1" Padding="0"/>
 
-            <Grid Grid.Row="4" Padding="5,5,5,5">
+            <Grid Grid.Row="4">
                 <Grid.ColumnDefinitions>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                     <ColumnDefinition Width="*"/>
                 </Grid.ColumnDefinitions>
 
-                <Button Grid.Column="0" IsVisible="False" IsEnabled="False"/>
+                <Grid.Padding>
+                    <OnPlatform x:TypeArguments="Thickness">
+                        <On Platform="Android" Value="5" />
+                        <On Platform="iOS" Value="5, 5, 5, 30" />
+                    </OnPlatform>
+                </Grid.Padding>
+                
                 <StackLayout Grid.Column="0" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="summary" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Summary" TextColor="Blue" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Summary" TextColor="#007AFF" FontSize="10" FontAttributes="Bold"/>
                 </StackLayout>
+                <Button Grid.Column="0" IsVisible="False" IsEnabled="False"/>
 
-                <Button Grid.Column="1" IsVisible="False" IsEnabled="True"/>
+                
                 <StackLayout Grid.Column="1" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="flame_black" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Activities" TextColor="Gray" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Activities" TextColor="#BEBEBE" FontSize="10" FontAttributes="Bold"/>
                 </StackLayout>
+                <Button Grid.Column="1" IsVisible="False" IsEnabled="True"/>
 
-                <Button Grid.Column="2" IsVisible="False" IsEnabled="True"/>
                 <StackLayout Grid.Column="2" Orientation="Vertical" HorizontalOptions="Center" Spacing="0">
                     <Image Source="friends" Aspect="AspectFit" HeightRequest="40"/>
-                    <Label Text="Friends" TextColor="Gray" FontSize="10" FontAttributes="Bold"/>
+                    <Label Text="Friends" TextColor="#BEBEBE" FontSize="10" FontAttributes="Bold"/>
                 </StackLayout>
-
+                <Button Grid.Column="2" IsVisible="False" IsEnabled="True"/>
             </Grid>
         </Grid>
     </ContentPage.Content>

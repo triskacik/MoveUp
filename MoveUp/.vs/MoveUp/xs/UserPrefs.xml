@@ -1,0 +1,24 @@
+﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Views/SummaryView.xaml">
+    <Files>
+      <File FileName="MoveUp/MoveUp/Views/SummaryView.xaml" Line="27" Column="34" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoveUp" expanded="True">
+            <Node name="MoveUp.iOS" selected="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.C984D0EC-03D7-441E-802B-D1D0F767DAC6" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
+</Properties>

@@ -46,11 +46,12 @@
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
     <MtouchArch>ARM64</MtouchArch>
-    <CodesignKey>iPhone Developer</CodesignKey>
+    <CodesignKey>Apple Development: treskon.tomas@gmail.com (852LJCDB67)</CodesignKey>
     <MtouchDebug>true</MtouchDebug>
     <CodesignEntitlements>Entitlements.plist</CodesignEntitlements>
     <MtouchLink>None</MtouchLink>
     <MtouchInterpreter>-all</MtouchInterpreter>
+    <CodesignProvision>iOS Team Provisioning Profile: com.xamarin.MoveUp</CodesignProvision>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|iPhone' ">
     <DebugType>none</DebugType>
@@ -156,8 +157,13 @@
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\iOS\Xamarin.iOS.CSharp.targets" />
   <ItemGroup>
     <ProjectReference Include="..\MoveUp\MoveUp.csproj">
-      <Project>{C174D639-64E1-4FC2-9460-974E5226669C}</Project>
+      <Project>{C54BA486-8089-4B93-A59E-6ECFFDE578FD}</Project>
       <Name>MoveUp</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <BundleResource Include="Resources\montserrat-bold.ttf" />
+    <BundleResource Include="Resources\montserrat-thin.ttf" />
+    <BundleResource Include="Resources\montserrat-regular.ttf" />
   </ItemGroup>
 </Project>

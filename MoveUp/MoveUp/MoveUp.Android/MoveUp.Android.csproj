@@ -16,7 +16,6 @@
     <AndroidManifest>Properties\AndroidManifest.xml</AndroidManifest>
     <MonoAndroidResourcePrefix>Resources</MonoAndroidResourcePrefix>
     <MonoAndroidAssetsPrefix>Assets</MonoAndroidAssetsPrefix>
-    <AndroidUseLatestPlatformSdk>false</AndroidUseLatestPlatformSdk>
     <TargetFrameworkVersion>v9.0</TargetFrameworkVersion>
     <AndroidEnableSGenConcurrent>true</AndroidEnableSGenConcurrent>
     <AndroidUseAapt2>true</AndroidUseAapt2>
@@ -90,7 +89,7 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\MoveUp\MoveUp.csproj">
-      <Project>{C174D639-64E1-4FC2-9460-974E5226669C}</Project>
+      <Project>{C54BA486-8089-4B93-A59E-6ECFFDE578FD}</Project>
       <Name>MoveUp</Name>
     </ProjectReference>
   </ItemGroup>
@@ -105,6 +104,11 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\summary.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidAsset Include="Assets\montserrat-bold.ttf" />
+    <AndroidAsset Include="Assets\montserrat-thin.ttf" />
+    <AndroidAsset Include="Assets\montserrat-regular.ttf" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
 </Project>
