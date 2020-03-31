@@ -1,16 +1,15 @@
 ﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Views/SummaryView.xaml">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/App.xaml">
     <Files>
-      <File FileName="MoveUp/MoveUp/Views/SummaryView.xaml" Line="104" Column="96" />
+      <File FileName="MoveUp/MoveUp/Views/SummaryView.xaml" Line="42" Column="79" />
+      <File FileName="MoveUp/MoveUp/App.xaml" Line="27" Column="51" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MoveUp" expanded="True">
             <Node name="MoveUp" expanded="True">
-              <Node name="Views" expanded="True">
-                <Node name="SummaryView.xaml" selected="True" />
-              </Node>
+              <Node name="App.xaml" selected="True" />
             </Node>
           </Node>
         </State>
