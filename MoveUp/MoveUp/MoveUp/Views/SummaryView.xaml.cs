@@ -1,4 +1,5 @@
-﻿using System;
+﻿using MoveUp.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -14,7 +15,13 @@ namespace MoveUp.Views
     {
         public SummaryView()
         {
+            BindingContext = new SummaryViewModel();
             InitializeComponent();
+        }
+
+        private void Button_Pressed(object sender, EventArgs e)
+        {
+
         }
     }
 }

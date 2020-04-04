@@ -138,8 +138,12 @@
     <ImageAsset Include="Assets.xcassets\AppIcon.appiconset\Icon20.png">
       <Visible>false</Visible>
     </ImageAsset>
-    <ImageAsset Include="Assets.xcassets\arrow.imageset\Contents.json" />
-    <ImageAsset Include="Assets.xcassets\arrow.imageset\arrow.png" />
+    <ImageAsset Include="Assets.xcassets\arrow.imageset\Contents.json">
+      <Visible>false</Visible>
+    </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\arrow.imageset\arrow.png">
+      <Visible>false</Visible>
+    </ImageAsset>
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

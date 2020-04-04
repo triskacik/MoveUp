@@ -11,15 +11,18 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="PropertyChanged.Fody" Version="3.2.7" />
     <PackageReference Include="Xamarin.Forms" Version="4.5.0.495" />
     <PackageReference Include="Xamarin.Essentials" Version="1.3.1" />
     <PackageReference Include="Xamarin.Forms.Maps" Version="4.5.0.495" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Models\" />
     <Folder Include="Resources\Drawable\" />
-    <Folder Include="ViewModels\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="FodyWeavers.xsd" />
   </ItemGroup>
 
   <ItemGroup>
