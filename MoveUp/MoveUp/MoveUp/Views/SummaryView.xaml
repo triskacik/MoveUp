@@ -1,11 +1,13 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://xamarin.com/schemas/2014/forms/design"
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
              xmlns:resources="clr-namespace:MoveUp.Resources"
              xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+             xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
              mc:Ignorable="d"
+             d:DataContext="{d:DesignInstance viewModels:SummaryViewModel}"
              x:Class="MoveUp.Views.SummaryView"
              BackgroundColor="{StaticResource PageBcgColor}">
     
