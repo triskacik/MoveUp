@@ -1,0 +1,31 @@
+﻿<Properties StartupConfiguration="{01672909-52A4-43FF-BF35-D2FBD255DC5D}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/App.xaml.cs">
+    <Files>
+      <File FileName="MoveUp/MoveUp/App.xaml.cs" Line="25" Column="1" />
+      <File FileName="MoveUp/MoveUp/Views/SummaryView.xaml" Line="1" Column="40" />
+      <File FileName="MoveUp/MoveUp/App.xaml" Line="23" Column="45" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoveUp" expanded="True">
+            <Node name="MoveUp" expanded="True">
+              <Node name="Views" expanded="True" />
+              <Node name="App.xaml" expanded="True">
+                <Node name="App.xaml.cs" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.DebuggerTimeoutException.MoveUp.iOS.HideInfoBar="True" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EE2D6548-F041-4A8D-9D45-CFAD51A81CE1" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
+</Properties>

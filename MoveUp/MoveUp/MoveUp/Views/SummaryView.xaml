@@ -1,150 +1,147 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
-             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-             xmlns:resources="clr-namespace:MoveUp.Resources"
-             xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
-             xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
-             mc:Ignorable="d"
-             d:DataContext="{d:DesignInstance viewModels:SummaryViewModel}"
-             x:Class="MoveUp.Views.SummaryView"
-             BackgroundColor="{StaticResource PageBcgColor}">
-    
-    <ContentPage.Content>
-  
-        <Grid RowSpacing="0">
-            <Grid.RowDefinitions>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="*"/>
-                <RowDefinition Height="Auto"/>
-                <RowDefinition Height="Auto"/>
-            </Grid.RowDefinitions>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:views="clr-namespace:MoveUp.Views"
+                xmlns:resources="clr-namespace:MoveUp.Resources"
+                xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+                xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:SummaryViewModel}"
+                x:Class="MoveUp.Views.SummaryView"
+                BackgroundColor="{StaticResource PageBcgColor}">
 
-            <Label Grid.Row="0" Text="{x:Static resources:Texts.SumView_Header}" Style="{StaticResource TopBarHeaderStyle}"/>
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:Texts.SumView_Header}" Style="{StaticResource HeaderStyle}"/>
+    </NavigationPage.TitleView>
 
-            <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
 
-            <ScrollView Grid.Row="2" Padding="{StaticResource ScrollViewAdditionalPadding}">
-                <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
 
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <Grid>
+
+        <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
+            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}">
+                    <Grid>
                             
-                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                                <Image Style="{StaticResource BannerLeftIcon}"/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
+                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                            <Image Style="{StaticResource BannerLeftIcon}"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
 
-                                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
-                                        <Label Text="{Binding Test.MyProperty}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
+                                    <Label Text="{Binding Test.MyProperty}" Style="{StaticResource DisplayedNumberTextStyle}"/>
 
-                                        <Label Style="{StaticResource ThickVerticalLineStyle}"/>
-
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}"/>
-                                            <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </StackLayout>
-                                <Image Style="{StaticResource BannerArrow}"/>
-                            </StackLayout>
-                            <Button BackgroundColor="Transparent" Command="{Binding TestCommand}"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <Grid>
-                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                                <Image Style="{StaticResource BannerLeftIcon}"/>                         
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{x:Static resources:Texts.SumView_Walking}" Style="{StaticResource HighlightedTextStyle}"/>
-
-                                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="3,54" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                                            <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
-                                        </StackLayout>
-                                        
-                                        <Label Style="{StaticResource ThickVerticalLineStyle}"/>
-
-                                        <StackLayout Orientation="Horizontal">
-                                            <Label Text="10" Style="{StaticResource SecondaryNumberTextStyle}"/>
-                                            <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
-                                        </StackLayout>
-                                    </StackLayout>
-                                </StackLayout>        
-                                <Image Style="{StaticResource BannerArrow}"/>
-                            </StackLayout>
-                            <Button BackgroundColor="Transparent"/>
-                        </Grid> 
-                    </Frame>
-
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <Grid>
-                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                                <Image Style="{StaticResource BannerLeftIcon}"/>                         
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{x:Static resources:Texts.SumView_Floors}" Style="{StaticResource HighlightedTextStyle}"/>
-                                    <Label Text="6" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                                </StackLayout>         
-                                <Image Style="{StaticResource BannerArrow}"/>
-                            </StackLayout>
-                            <Button BackgroundColor="Transparent"/>
-                        </Grid>
-                    </Frame>
-
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <Grid>
-                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                                <Image Style="{StaticResource BannerLeftIcon}"/>
-                                <StackLayout Orientation="Vertical">
-                                    <Label Text="{x:Static resources:Texts.SumView_Calories}" Style="{StaticResource HighlightedTextStyle}"/>
+                                    <Label Style="{StaticResource ThickVerticalLineStyle}"/>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="235" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                                        <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                        <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                                     </StackLayout>
                                 </StackLayout>
-                                <Image Style="{StaticResource BannerArrow}"/>
                             </StackLayout>
-                            <Button BackgroundColor="Transparent"/>
-                        </Grid>
-                    </Frame>
+                            <Image Style="{StaticResource BannerArrow}"/>
+                        </StackLayout>
+                        <Button BackgroundColor="Transparent" Command="{Binding TestCommand}"/>
+                    </Grid>
+                </Frame>
 
-                    <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
+                <Frame Style="{StaticResource PrimaryBannerStyle}">
+                    <Grid>
+                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                            <Image Style="{StaticResource BannerLeftIcon}"/>                         
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{x:Static resources:Texts.SumView_Walking}" Style="{StaticResource HighlightedTextStyle}"/>
 
-                    <map:Map Style="{StaticResource MapStyle}"/>
+                                <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="3,54" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                    </StackLayout>
+                                        
+                                    <Label Style="{StaticResource ThickVerticalLineStyle}"/>
 
-                </StackLayout>
-            </ScrollView>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="10" Style="{StaticResource SecondaryNumberTextStyle}"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                    </StackLayout>
+                                </StackLayout>
+                            </StackLayout>        
+                            <Image Style="{StaticResource BannerArrow}"/>
+                        </StackLayout>
+                        <Button BackgroundColor="Transparent"/>
+                    </Grid> 
+                </Frame>
 
-            <Label Grid.Row="3" Style="{StaticResource ThinHorizontalLineStyle}"/>
+                <Frame Style="{StaticResource PrimaryBannerStyle}">
+                    <Grid>
+                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                            <Image Style="{StaticResource BannerLeftIcon}"/>                         
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{x:Static resources:Texts.SumView_Floors}" Style="{StaticResource HighlightedTextStyle}"/>
+                                <Label Text="6" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                            </StackLayout>         
+                            <Image Style="{StaticResource BannerArrow}"/>
+                        </StackLayout>
+                        <Button BackgroundColor="Transparent"/>
+                    </Grid>
+                </Frame>
 
-            <Grid Grid.Row="4" Style="{StaticResource NavBarGridStyle}">
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                    <ColumnDefinition Width="*"/>
-                </Grid.ColumnDefinitions>
+                <Frame Style="{StaticResource PrimaryBannerStyle}">
+                    <Grid>
+                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                            <Image Style="{StaticResource BannerLeftIcon}"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{x:Static resources:Texts.SumView_Calories}" Style="{StaticResource HighlightedTextStyle}"/>
 
-                <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
-                    <ImageButton Style="{StaticResource NavBarSummary}"/>
-                    <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarSelectedTextStyle}"/>
-                </StackLayout>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="235" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                    <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>
+                            <Image Style="{StaticResource BannerArrow}"/>
+                        </StackLayout>
+                        <Button BackgroundColor="Transparent"/>
+                    </Grid>
+                </Frame>
 
-                <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
-                    <ImageButton Style="{StaticResource NavBarActivities}"/>
-                    <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarTextStyle}"/>
-                </StackLayout>
+                <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
 
-                <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
-                    <ImageButton Style="{StaticResource NavBarFriends}"/>
-                    <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
-                </StackLayout>
-            </Grid>
+                <map:Map Style="{StaticResource MapStyle}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+
+        <Grid Grid.Row="2" Style="{StaticResource NavBarGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarSummary}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarSelectedTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarActivities}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
         </Grid>
-    </ContentPage.Content>
-
-</ContentPage>
+    </Grid>
+</views:ViewBase>
