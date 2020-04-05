@@ -27,6 +27,7 @@
     <Folder Include="Factories\Interfaces\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
+    <Folder Include="Helpers\" />
   </ItemGroup>
 
   <ItemGroup>

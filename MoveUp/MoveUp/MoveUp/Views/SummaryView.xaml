@@ -62,7 +62,7 @@
 
                                 <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="3,54" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                        <Label Text="{Binding MotionData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
                                         <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                                     </StackLayout>
                                         
@@ -86,7 +86,7 @@
                             <Image Style="{StaticResource BannerLeftIcon}"/>                         
                             <StackLayout Orientation="Vertical">
                                 <Label Text="{x:Static resources:Texts.SumView_Floors}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <Label Text="6" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{Binding MotionData.Floors}" Style="{StaticResource DisplayedNumberTextStyle}"/>
                             </StackLayout>         
                             <Image Style="{StaticResource BannerArrow}"/>
                         </StackLayout>
@@ -102,7 +102,7 @@
                                 <Label Text="{x:Static resources:Texts.SumView_Calories}" Style="{StaticResource HighlightedTextStyle}"/>
 
                                 <StackLayout Orientation="Horizontal">
-                                    <Label Text="235" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                    <Label Text="{Binding MotionData.Calories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
                                     <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                                 </StackLayout>
                             </StackLayout>

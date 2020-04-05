@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Globalization;
+using System.Threading.Tasks;
 using CoreMotion;
 using Foundation;
 using MoveUp.iOS.CoreMotion.Extensions;
@@ -12,30 +12,49 @@ namespace MoveUp.iOS.CoreMotion
     {
         private CMPedometer pedometer;
         private CMPedometerData pedometerData;
+        private CoreMotionData motionData = new CoreMotionData();
+        private bool couningAvailable = false;
 
         public int Steps { get; set; }
 
         public CoreMotionController()
         {
-            pedometer = new CMPedometer();
-            TriggerPedometer();
+            if (CMPedometer.IsStepCountingAvailable)
+            {
+                couningAvailable = true;
+                pedometer = new CMPedometer();
+            }
         }
 
-        private async void TriggerPedometer()
+        public async Task TriggerPedometer()
         {
-            //pedometer.StartPedometerUpdates(new NSDate(), UpdatePedometerData);
+            if (couningAvailable)
+            {
+                DateTime startDate = DateTime.Today;
+                DateTime endDate = DateTime.Now;
 
-            Calendar calendar;
+                pedometerData = await pedometer.QueryPedometerDataAsync(DateConverter.DateTimeToNSDate(startDate), DateConverter.DateTimeToNSDate(endDate));
 
-            DateTime startDate = DateTime.Today;
-            DateTime endDate = DateTime.Now;
+                pedometer.StartPedometerUpdates(DateConverter.DateTimeToNSDate(startDate), UpdatePedometerData);
+                UpdatePedometerData(pedometerData, null);
+            }
+        }
 
-            pedometerData = await pedometer.QueryPedometerDataAsync(DateConverter.DateTimeToNSDate(startDate), DateConverter.DateTimeToNSDate(endDate));
+        private void UpdatePedometerData(CMPedometerData data, NSError error)
+        {
+            if (error == null)
+            {
+                pedometerData = data;
+                motionData.Steps = pedometerData.NumberOfSteps.Int32Value;
+                motionData.Distance = pedometerData.Distance.Int32Value / 1000d;
+                motionData.Floors = pedometerData.FloorsAscended.Int32Value;
+                motionData.RefreshCalories();
+            } 
         }
 
         public CoreMotionData GetData()
         {
-            return new CoreMotionData(pedometerData.NumberOfSteps.Int32Value);
+            return motionData;
         }
     }
 }

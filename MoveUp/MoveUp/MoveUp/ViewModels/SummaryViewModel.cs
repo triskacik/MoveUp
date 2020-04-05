@@ -11,13 +11,20 @@ namespace MoveUp.ViewModels
     public class SummaryViewModel : ViewModelBase
     {
         private ICommandFactory commandFactory;
-        public ICommand TestCommand { get; set; }
+        private ICoreMotionController motionController;
 
         public CoreMotionData MotionData { get; set; }
 
-        public SummaryViewModel(ICommandFactory commandFac, ICoreMotionController motionController)
+        public SummaryViewModel(ICommandFactory commandFac, ICoreMotionController motionContr)
         {
             commandFactory = commandFac;
+            motionController = motionContr;
+            InitializeMotion();
+        }
+
+        private async void InitializeMotion()
+        {
+            await motionController.TriggerPedometer();
             MotionData = motionController.GetData();
         }
     }

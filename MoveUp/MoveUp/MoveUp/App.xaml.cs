@@ -13,28 +13,28 @@ namespace MoveUp
     {
         public IDependencyInjectionService MyDependencyService { get; }
 
-        public App(IEnumerable<IInstaller> installers = null)
+        public App(IEnumerable<IInstaller> remoteInstallers = null)
         {
             InitializeComponent();
 
             MyDependencyService = new DependencyInjectionService();
             var navigationPage = new NavigationPage();
 
-            RegisterDependencies(MyDependencyService, navigationPage.Navigation, installers);
+            RegisterDependencies(MyDependencyService, navigationPage.Navigation, remoteInstallers);
             var navigationService = MyDependencyService.Resolve<INavigationService>();
             navigationService.PushAsync<SummaryViewModel>();
 
             MainPage = navigationPage;
         }
 
-        private void RegisterDependencies(IDependencyInjectionService dependencyService, INavigation navigation, IEnumerable<IInstaller> installers)
+        private void RegisterDependencies(IDependencyInjectionService dependencyService, INavigation navigation, IEnumerable<IInstaller> remoteInstallers)
         {
             var serviceCollection = new ServiceCollection();
             var coreInstaller = new CoreInstaller();
 
             coreInstaller.Install(serviceCollection, dependencyService, navigation);
 
-            foreach (IInstaller installer in installers)
+            foreach (IInstaller installer in remoteInstallers)
             {
                 installer.Install(serviceCollection);
             }
@@ -44,6 +44,7 @@ namespace MoveUp
 
         protected override void OnStart()
         {
+
         }
 
         protected override void OnSleep()
