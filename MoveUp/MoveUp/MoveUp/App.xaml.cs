@@ -5,6 +5,7 @@ using MoveUp.ViewModels;
 using Microsoft.Extensions.DependencyInjection;
 using MoveUp.Installers;
 using MoveUp.Views;
+using System.Collections.Generic;
 
 namespace MoveUp
 {
@@ -12,25 +13,31 @@ namespace MoveUp
     {
         public IDependencyInjectionService MyDependencyService { get; }
 
-        public App()
+        public App(IEnumerable<IInstaller> installers = null)
         {
             InitializeComponent();
 
             MyDependencyService = new DependencyInjectionService();
             var navigationPage = new NavigationPage();
 
-            RegisterDependencies(MyDependencyService, navigationPage.Navigation);
+            RegisterDependencies(MyDependencyService, navigationPage.Navigation, installers);
             var navigationService = MyDependencyService.Resolve<INavigationService>();
             navigationService.PushAsync<SummaryViewModel>();
 
             MainPage = navigationPage;
         }
 
-        private void RegisterDependencies(IDependencyInjectionService dependencyService, INavigation navigation)
+        private void RegisterDependencies(IDependencyInjectionService dependencyService, INavigation navigation, IEnumerable<IInstaller> installers)
         {
             var serviceCollection = new ServiceCollection();
             var coreInstaller = new CoreInstaller();
+
             coreInstaller.Install(serviceCollection, dependencyService, navigation);
+
+            foreach (IInstaller installer in installers)
+            {
+                installer.Install(serviceCollection);
+            }
 
             dependencyService.Build(serviceCollection);
         }

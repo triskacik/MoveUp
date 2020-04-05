@@ -25,7 +25,6 @@
     <Folder Include="Resources\Drawable\" />
     <Folder Include="Factories\" />
     <Folder Include="Factories\Interfaces\" />
-    <Folder Include="Installers\" />
     <Folder Include="Services\" />
     <Folder Include="Services\Interfaces\" />
   </ItemGroup>

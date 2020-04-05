@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 
 using Foundation;
+using MoveUp.Installers;
+using MoveUp.iOS.Installers;
 using UIKit;
 
 namespace MoveUp.iOS
@@ -24,7 +26,7 @@ namespace MoveUp.iOS
         {
             Xamarin.FormsMaps.Init();
             global::Xamarin.Forms.Forms.Init();
-            LoadApplication(new App());
+            LoadApplication(new App(new List<IInstaller>() { new iOSInstaller() }));
 
             return base.FinishedLaunching(app, options);
         }
