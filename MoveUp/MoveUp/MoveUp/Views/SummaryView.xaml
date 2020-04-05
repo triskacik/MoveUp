@@ -13,7 +13,7 @@
                 BackgroundColor="{StaticResource PageBcgColor}">
 
     <NavigationPage.TitleView>
-        <Label Text="{x:Static resources:Texts.SumView_Header}" Style="{StaticResource HeaderStyle}"/>
+        <Label Text="{x:Static resources:Texts.SumView_Header}" Style="{StaticResource TopBarHeaderStyle}"/>
     </NavigationPage.TitleView>
 
     <Grid RowSpacing="0">
@@ -37,7 +37,7 @@
                                 <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
 
                                 <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackSecondarySpacing}">
-                                    <Label Text="{Binding Test.MyProperty}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                    <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
 
                                     <Label Style="{StaticResource ThickVerticalLineStyle}"/>
 

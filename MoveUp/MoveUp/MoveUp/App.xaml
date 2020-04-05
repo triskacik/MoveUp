@@ -44,15 +44,18 @@
             </OnPlatform>
 
             <!-- Padding Resources Here -->
-            <OnPlatform x:Key="TopBarPadding" x:TypeArguments="Thickness">
-                <On Platform="Android" Value="20, 10, 20, 10" />
-                <On Platform="iOS" Value="20, 50, 20, 10" />
-            </OnPlatform>
 
             <OnPlatform x:Key="NavBarPadding" x:TypeArguments="Thickness">
                 <On Platform="Android" Value="5" />
                 <On Platform="iOS" Value="5, 5, 5, 30" />
             </OnPlatform>
+
+            <Thickness x:Key="TopBarPadding">
+                <Thickness.Bottom>0</Thickness.Bottom>
+                <Thickness.Top>0</Thickness.Top>
+                <Thickness.Left>10</Thickness.Left>
+                <Thickness.Right>10</Thickness.Right>
+            </Thickness>
 
             <Thickness x:Key="PrimaryPagePadding">
                 <Thickness.Bottom>20</Thickness.Bottom>
