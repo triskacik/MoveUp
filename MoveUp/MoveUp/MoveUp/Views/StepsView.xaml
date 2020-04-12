@@ -6,6 +6,7 @@
                 xmlns:views="clr-namespace:MoveUp.Views"
                 xmlns:resources="clr-namespace:MoveUp.Resources"
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:StepsViewModel}"
                 x:Class="MoveUp.Views.StepsView"
