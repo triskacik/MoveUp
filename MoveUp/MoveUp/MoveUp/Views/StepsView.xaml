@@ -1,0 +1,109 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:views="clr-namespace:MoveUp.Views"
+                xmlns:resources="clr-namespace:MoveUp.Resources"
+                xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:StepsViewModel}"
+                x:Class="MoveUp.Views.StepsView"
+                BackgroundColor="{StaticResource PageBcgColor}"
+                NavigationPage.BackButtonTitle="{x:Static resources:Texts.Page_Back}">
+
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:Texts.StepsView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
+    </NavigationPage.TitleView>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
+            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+
+                <StackLayout Spacing="0">
+                <Frame Style="{StaticResource PrimaryBannerStyle}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Image Style="{StaticResource BannerLeftIcon}"/>
+                        <StackLayout Orientation="Vertical">
+                            <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
+                            <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                        </StackLayout>
+                        <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                            <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
+                            <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
+                        </StackLayout>             
+                    </StackLayout>
+                </Frame>
+                    <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
+                </StackLayout>
+
+                <Frame Style="{StaticResource SecondaryBannerStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
+                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>
+
+                <Frame Style="{StaticResource SecondaryBannerStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static resources:Texts.StepsView_AvgWeek}" Style="{StaticResource HighlightedTextStyle}"/>
+                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="{x:Static resources:Texts.StepsView_MonthHeader}" Style="{StaticResource HeaderStyle}"/>
+
+                <Frame Style="{StaticResource SecondaryBannerStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static resources:Texts.StepsView_AvgMonth}" Style="{StaticResource HighlightedTextStyle}"/>
+                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Label Text="{x:Static resources:Texts.StepsView_AllTime}" Style="{StaticResource HeaderStyle}"/>
+
+                <Frame Style="{StaticResource SecondaryBannerStyle}">
+                    <StackLayout Orientation="Horizontal">
+                        <Label Text="{x:Static resources:Texts.StepsView_AvgAllTime}" Style="{StaticResource HighlightedTextStyle}"/>
+                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+            </StackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+
+        <Grid Grid.Row="2" Style="{StaticResource NavBarGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarSummary}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarSelectedTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarActivities}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+        </Grid>
+
+    </Grid>
+</views:ViewBase>

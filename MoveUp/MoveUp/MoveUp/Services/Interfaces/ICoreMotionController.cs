@@ -7,6 +7,7 @@ namespace MoveUp.Services.Interfaces
     public interface ICoreMotionController : ISingletonService
     {
         CoreMotionData GetData();
-        Task TriggerPedometer();
+        Task<CoreMotionWeeklyData> GetWeeklyDataAsync();
+        Task TriggerPedometerAsync();
     }
 }

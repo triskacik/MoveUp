@@ -18,20 +18,20 @@ namespace MoveUp.Services
 
         public async Task PopAsync(bool animated = false)
         {
-            await navigation.PopAsync(animated);
+            await navigation.PopAsync(true);
         }
 
         public async Task PopToRootAsync(bool animated = false)
         {
-            await navigation.PopToRootAsync(animated);
+            await navigation.PopToRootAsync(true);
         }
 
-        public async Task PushAsync<TViewModel>(TViewModel viewModel = default, bool animated = false, bool clearHistory = false)
+        public async Task PushAsync<TViewModel>(TViewModel viewModel = default, bool animated = true, bool clearHistory = false)
         {
             try
             {
                 var view = mvvmLocatorService.ResolveView(viewModel);
-                await navigation.PushAsync(view, animated);
+                await navigation.PushAsync(view, true);
             }
             catch (Exception)
             {

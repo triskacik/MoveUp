@@ -29,8 +29,7 @@
             <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
 
                 <Frame Style="{StaticResource PrimaryBannerStyle}">
-                    <Grid>
-                            
+                    <Grid>  
                         <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                             <Image Style="{StaticResource BannerLeftIcon}"/>
                             <StackLayout Orientation="Vertical">
@@ -49,7 +48,7 @@
                             </StackLayout>
                             <Image Style="{StaticResource BannerArrow}"/>
                         </StackLayout>
-                        <Button BackgroundColor="Transparent" Command="{Binding TestCommand}"/>
+                        <Button BackgroundColor="Transparent" Command="{Binding ToStepsViewCom}"/>
                     </Grid>
                 </Frame>
 

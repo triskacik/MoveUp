@@ -47,7 +47,7 @@
 
             <OnPlatform x:Key="NavBarPadding" x:TypeArguments="Thickness">
                 <On Platform="Android" Value="5" />
-                <On Platform="iOS" Value="5, 5, 5, 30" />
+                <On Platform="iOS" Value="5, 5, 5, 20" />
             </OnPlatform>
 
             <Thickness x:Key="TopBarPadding">
@@ -78,6 +78,13 @@
                 <Thickness.Bottom>10</Thickness.Bottom>
             </Thickness>
 
+            <Thickness x:Key="SecondaryBannerPadding">
+                <Thickness.Left>20</Thickness.Left>
+                <Thickness.Top>10</Thickness.Top>
+                <Thickness.Right>20</Thickness.Right>
+                <Thickness.Bottom>10</Thickness.Bottom>
+            </Thickness>
+
             <!-- NavBar Resources Here -->
             <StackOrientation x:Key="NavBarStackOrientation">Vertical</StackOrientation>
             <LayoutOptions x:Key="NavBarHorizontalOptions">Center</LayoutOptions>
@@ -88,6 +95,7 @@
             <x:Int32 x:Key="ThickLineWidth">3</x:Int32>
 
             <x:Double x:Key="StackLayoutPrimarySpacing">20</x:Double>
+            <x:Double x:Key="StackLayoutSecondarySpacing">10</x:Double>
             <x:Double x:Key="BannerStackPrimarySpacing">15</x:Double>
             <x:Double x:Key="BannerStackSecondarySpacing">20</x:Double>
 
@@ -111,6 +119,10 @@
 
             <Style x:Key="TopBarHeaderStyle" TargetType="Label" BasedOn="{StaticResource HeaderStyle}">
                 <Setter Property="Padding" Value="{StaticResource TopBarPadding}"/>
+            </Style>
+
+            <Style x:Key="TopBarHeaderStyleWithBack" TargetType="Label" BasedOn="{StaticResource HeaderStyle}">
+                <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
             </Style>
 
             <Style x:Key="HighlightedTextStyle" TargetType="Label">
@@ -168,6 +180,10 @@
                 <Setter Property="VerticalOptions" Value="StartAndExpand"/>
             </Style>
 
+            <Style x:Key="SecondaryStackLayoutStyle" TargetType="StackLayout" BasedOn="{StaticResource PrimaryStackLayoutStyle}">
+                <Setter Property="Spacing" Value="{StaticResource StackLayoutSecondarySpacing}"/>
+            </Style>
+
             <Style x:Key="NavBarStackLayoutStyle" TargetType="StackLayout">
                 <Setter Property="Spacing" Value="0"/>
                 <Setter Property="Orientation" Value="Vertical"/>
@@ -180,6 +196,10 @@
                 <Setter Property="HasShadow" Value="{StaticResource BannerShadow}"/>
                 <Setter Property="CornerRadius" Value="{StaticResource PrimaryCornerRadius}"/>
                 <Setter Property="Padding" Value="{StaticResource BannerPadding}"/>
+            </Style>
+
+            <Style x:Key="SecondaryBannerStyle" TargetType="Frame" BasedOn="{StaticResource PrimaryBannerStyle}">
+                <Setter Property="Padding" Value="{StaticResource SecondaryBannerPadding}"/>
             </Style>
 
             <!-- Image Styles Here -->
@@ -239,6 +259,13 @@
                 <Setter Property="IsShowingUser" Value="True"/>
                 <Setter Property="HasZoomEnabled" Value="True"/>
                 <Setter Property="HeightRequest" Value="{StaticResource MapHeight}"/>
+            </Style>
+
+            <Style x:Key="TextButtonStyle" TargetType="Button">
+                <Setter Property="BackgroundColor" Value="Transparent"/>
+                <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
+                <Setter Property="FontSize" Value="{StaticResource SecondaryTextSize}"/>
+                <Setter Property="TextColor" Value="{StaticResource NavBarSelectedTextColor}"/>
             </Style>
 
 

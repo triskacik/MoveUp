@@ -127,7 +127,7 @@
     <value>Summary</value>
   </data>
   <data name="SumView.Calories" xml:space="preserve">
-    <value>Calories Burned</value>
+    <value>Calories Burned Walking</value>
   </data>
   <data name="SumView.Floors" xml:space="preserve">
     <value>Floors Climbed</value>
@@ -152,5 +152,35 @@
   </data>
   <data name="SumView.Walking" xml:space="preserve">
     <value>Walking Distance</value>
+  </data>
+  <data name="StepsView.Header" xml:space="preserve">
+    <value>Steps</value>
+  </data>
+  <data name="StepsView.SetTarget" xml:space="preserve">
+    <value>Set new target</value>
+  </data>
+  <data name="StepsView.WeekHeader" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="StepsView.MonthHeader" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="StepsView.BestDaily" xml:space="preserve">
+    <value>Best daily count</value>
+  </data>
+  <data name="StepsView.AvgWeek" xml:space="preserve">
+    <value>This week's daily average</value>
+  </data>
+  <data name="StepsView.AvgMonth" xml:space="preserve">
+    <value>This month's daily average</value>
+  </data>
+  <data name="StepsView.AvgAllTime" xml:space="preserve">
+    <value>All time daily average</value>
+  </data>
+  <data name="Page.Back" xml:space="preserve">
+    <value>back</value>
+  </data>  
+  <data name="StepsView.AllTime" xml:space="preserve">
+    <value>All Time</value>
   </data>
 </root>

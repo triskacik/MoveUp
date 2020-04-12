@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using CoreMotion;
 using Foundation;
@@ -26,7 +27,7 @@ namespace MoveUp.iOS.CoreMotion
             }
         }
 
-        public async Task TriggerPedometer()
+        public async Task TriggerPedometerAsync()
         {
             if (couningAvailable)
             {
@@ -55,6 +56,37 @@ namespace MoveUp.iOS.CoreMotion
         public CoreMotionData GetData()
         {
             return motionData;
+        }
+
+        public async Task<CoreMotionWeeklyData> GetWeeklyDataAsync()
+        {
+            List<CoreMotionData> data = new List<CoreMotionData>();
+
+            if (couningAvailable)
+            {
+                for (int i = 6; i > 0; i--)
+                {
+                    DateTime startDate = DateTime.Today.AddDays(-i);
+                    DateTime endDate = startDate.AddDays(1);
+
+                    var pedometerData = await pedometer.QueryPedometerDataAsync(DateConverter.DateTimeToNSDate(startDate), DateConverter.DateTimeToNSDate(endDate));
+
+                    CoreMotionData oneDayData = new CoreMotionData
+                    {
+                        Date = startDate,
+                        Steps = pedometerData.NumberOfSteps.Int32Value,
+                        Distance = pedometerData.Distance.Int32Value / 1000d,
+                        Floors = pedometerData.FloorsAscended.Int32Value
+                    };
+                    oneDayData.RefreshCalories();
+
+                    data.Add(oneDayData);
+                }
+
+                data.Add(motionData);
+            }
+
+            return new CoreMotionWeeklyData(data);
         }
     }
 }
