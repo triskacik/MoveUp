@@ -25,59 +25,66 @@
         </Grid.RowDefinitions>
 
         <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
-            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+            <StackLayout Padding="0">
+                <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
 
-                <StackLayout Spacing="0">
-                <Frame Style="{StaticResource PrimaryBannerStyle}">
-                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                        <Image Style="{StaticResource BannerLeftIcon}"/>
-                        <StackLayout Orientation="Vertical">
-                            <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                    <Frame Style="{StaticResource SecondaryBannerStyle}">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
+                            <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
-                        <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                            <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
-                            <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
-                        </StackLayout>             
+                    </Frame>
+
+                    <StackLayout Spacing="0">
+                    <Frame Style="{StaticResource PrimaryBannerStyle}">
+                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                            <Image Style="{StaticResource BannerLeftIcon}"/>
+                            <StackLayout Orientation="Vertical">
+                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
+                                <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                            </StackLayout>
+                            <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
+                            </StackLayout>             
+                        </StackLayout>
+                    </Frame>
+                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
-                </Frame>
-                    <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
+
+                    <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>
+
+                    <Frame Style="{StaticResource SecondaryBannerStyle}">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{x:Static resources:Texts.StepsView_AvgWeek}" Style="{StaticResource HighlightedTextStyle}"/>
+                            <Label Text="{Binding WeeklyMotionData.AverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </Frame>
                 </StackLayout>
 
-                <Frame Style="{StaticResource SecondaryBannerStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
-                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </Frame>
+                <charts:ChartView Chart="{Binding WeekChart}" HeightRequest="250"/>
 
-                <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>
+                <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+                
+                    <Label Text="{x:Static resources:Texts.StepsView_MonthHeader}" Style="{StaticResource HeaderStyle}"/>
 
-                <Frame Style="{StaticResource SecondaryBannerStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{x:Static resources:Texts.StepsView_AvgWeek}" Style="{StaticResource HighlightedTextStyle}"/>
-                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </Frame>
+                    <Frame Style="{StaticResource SecondaryBannerStyle}">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{x:Static resources:Texts.StepsView_AvgMonth}" Style="{StaticResource HighlightedTextStyle}"/>
+                            <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </Frame>
 
-                <Label Text="{x:Static resources:Texts.StepsView_MonthHeader}" Style="{StaticResource HeaderStyle}"/>
+                    <Label Text="{x:Static resources:Texts.StepsView_AllTime}" Style="{StaticResource HeaderStyle}"/>
 
-                <Frame Style="{StaticResource SecondaryBannerStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{x:Static resources:Texts.StepsView_AvgMonth}" Style="{StaticResource HighlightedTextStyle}"/>
-                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </Frame>
-
-                <Label Text="{x:Static resources:Texts.StepsView_AllTime}" Style="{StaticResource HeaderStyle}"/>
-
-                <Frame Style="{StaticResource SecondaryBannerStyle}">
-                    <StackLayout Orientation="Horizontal">
-                        <Label Text="{x:Static resources:Texts.StepsView_AvgAllTime}" Style="{StaticResource HighlightedTextStyle}"/>
-                        <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </Frame>
+                    <Frame Style="{StaticResource SecondaryBannerStyle}">
+                        <StackLayout Orientation="Horizontal">
+                            <Label Text="{x:Static resources:Texts.StepsView_AvgAllTime}" Style="{StaticResource HighlightedTextStyle}"/>
+                            <Label Text="99 999" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                        </StackLayout>
+                    </Frame>
+                </StackLayout>
             </StackLayout>
         </ScrollView>
 

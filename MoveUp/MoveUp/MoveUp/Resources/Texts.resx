@@ -160,7 +160,7 @@
     <value>Set new target</value>
   </data>
   <data name="StepsView.WeekHeader" xml:space="preserve">
-    <value>This Week</value>
+    <value>Last 7 Days</value>
   </data>
   <data name="StepsView.MonthHeader" xml:space="preserve">
     <value>This Month</value>
@@ -169,7 +169,7 @@
     <value>Best daily count</value>
   </data>
   <data name="StepsView.AvgWeek" xml:space="preserve">
-    <value>This week's daily average</value>
+    <value>Daily average of last 7 days</value>
   </data>
   <data name="StepsView.AvgMonth" xml:space="preserve">
     <value>This month's daily average</value>

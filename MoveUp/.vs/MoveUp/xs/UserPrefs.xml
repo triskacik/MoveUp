@@ -1,0 +1,42 @@
+﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Views/StepsView.xaml">
+    <Files>
+      <File FileName="MoveUp/MoveUp/Views/StepsView.xaml" Line="63" Column="29" />
+      <File FileName="MoveUp/MoveUp/ViewModels/StepsViewModel.cs" Line="41" Column="1" />
+      <File FileName="MoveUp/MoveUp/Models/CoreMotionWeeklyData.cs" Line="39" Column="7" />
+      <File FileName="MoveUp/MoveUp/App.xaml" />
+      <File FileName="MoveUp/MoveUp/ViewModels/SummaryViewModel.cs" />
+      <File FileName="MoveUp/MoveUp.iOS/Main.cs" />
+      <File FileName="MoveUp/MoveUp.iOS/CoreMotion/CoreMotionController.cs" />
+      <File FileName="MoveUp/MoveUp.iOS/Info.plist" />
+      <File FileName="MoveUp/MoveUp/Resources/Texts.resx" Line="186" Column="8" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="MoveUp" expanded="True">
+            <Node name="MoveUp" expanded="True">
+              <Node name="Models" expanded="True" />
+              <Node name="Resources" expanded="True" />
+              <Node name="ViewModels" expanded="True" />
+              <Node name="Views" expanded="True">
+                <Node name="StepsView.xaml" selected="True" />
+              </Node>
+            </Node>
+            <Node name="MoveUp.iOS" expanded="True">
+              <Node name="CoreMotion" expanded="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EE2D6548-F041-4A8D-9D45-CFAD51A81CE1" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
+</Properties>
