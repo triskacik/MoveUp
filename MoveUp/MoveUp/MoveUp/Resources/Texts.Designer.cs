@@ -149,21 +149,9 @@ namespace MoveUp.Resources {
             }
         }
         
-        public static string StepsView_AvgWeek {
+        public static string StepsView_DailyAvg {
             get {
-                return ResourceManager.GetString("StepsView.AvgWeek", resourceCulture);
-            }
-        }
-        
-        public static string StepsView_AvgMonth {
-            get {
-                return ResourceManager.GetString("StepsView.AvgMonth", resourceCulture);
-            }
-        }
-        
-        public static string StepsView_AvgAllTime {
-            get {
-                return ResourceManager.GetString("StepsView.AvgAllTime", resourceCulture);
+                return ResourceManager.GetString("StepsView.DailyAvg", resourceCulture);
             }
         }
         
@@ -176,6 +164,24 @@ namespace MoveUp.Resources {
         public static string StepsView_AllTime {
             get {
                 return ResourceManager.GetString("StepsView.AllTime", resourceCulture);
+            }
+        }
+        
+        public static string DistanceView_Header {
+            get {
+                return ResourceManager.GetString("DistanceView.Header", resourceCulture);
+            }
+        }
+        
+        public static string FloorsView_Header {
+            get {
+                return ResourceManager.GetString("FloorsView.Header", resourceCulture);
+            }
+        }
+        
+        public static string CaloriesView_Header {
+            get {
+                return ResourceManager.GetString("CaloriesView.Header", resourceCulture);
             }
         }
     }

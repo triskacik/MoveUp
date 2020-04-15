@@ -168,19 +168,22 @@
   <data name="StepsView.BestDaily" xml:space="preserve">
     <value>Best daily count</value>
   </data>
-  <data name="StepsView.AvgWeek" xml:space="preserve">
-    <value>Daily average of last 7 days</value>
-  </data>
-  <data name="StepsView.AvgMonth" xml:space="preserve">
-    <value>This month's daily average</value>
-  </data>
-  <data name="StepsView.AvgAllTime" xml:space="preserve">
-    <value>All time daily average</value>
+  <data name="StepsView.DailyAvg" xml:space="preserve">
+    <value>Daily average</value>
   </data>
   <data name="Page.Back" xml:space="preserve">
     <value>back</value>
   </data>  
   <data name="StepsView.AllTime" xml:space="preserve">
     <value>All Time</value>
+  </data>
+  <data name="DistanceView.Header" xml:space="preserve">
+    <value>Walking Distance</value>
+  </data>
+  <data name="FloorsView.Header" xml:space="preserve">
+    <value>Floors Climbed</value>
+  </data>
+  <data name="CaloriesView.Header" xml:space="preserve">
+    <value>Calories Burned</value>
   </data>
 </root>

@@ -17,6 +17,9 @@ namespace MoveUp.ViewModels
         public CoreMotionData MotionData { get; set; }
 
         public ICommand ToStepsViewCom { get; set; }
+        public ICommand ToDistanceViewCom { get; set; }
+        public ICommand ToFloorsViewCom { get; set; }
+        public ICommand ToCaloriesViewCom { get; set; }
 
         public SummaryViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation)
         {
@@ -25,10 +28,14 @@ namespace MoveUp.ViewModels
             navigationService = navigation;
 
             ToStepsViewCom = commandFactory.CreateCommand(ToStepsView);
-            InitializeMotion();
+            ToDistanceViewCom = commandFactory.CreateCommand(ToDistanceView);
+            ToFloorsViewCom = commandFactory.CreateCommand(ToFloorsView);
+            ToCaloriesViewCom = commandFactory.CreateCommand(ToCaloriesView);
+
+            InitializeMotionAsync();
         }
 
-        private async void InitializeMotion()
+        private async void InitializeMotionAsync()
         {
             await motionController.TriggerPedometerAsync();
             MotionData = motionController.GetData();
@@ -37,6 +44,21 @@ namespace MoveUp.ViewModels
         private void ToStepsView()
         {
             navigationService.PushAsync<StepsViewModel>();  
+        }
+
+        private void ToDistanceView()
+        {
+            navigationService.PushAsync<DistanceViewModel>();
+        }
+
+        private void ToFloorsView()
+        {
+            navigationService.PushAsync<FloorsViewModel>();
+        }
+
+        private void ToCaloriesView()
+        {
+            navigationService.PushAsync<CaloriesViewModel>();
         }
     }
 }

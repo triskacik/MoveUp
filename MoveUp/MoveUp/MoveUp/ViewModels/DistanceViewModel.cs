@@ -10,7 +10,7 @@ using Xamarin.Essentials;
 
 namespace MoveUp.ViewModels
 {
-    public class StepsViewModel : ViewModelBase
+    public class DistanceViewModel : ViewModelBase
     {
         private ICommandFactory commandFactory;
         private ICoreMotionController motionController;
@@ -21,13 +21,13 @@ namespace MoveUp.ViewModels
         public CoreMotionWeeklyData WeeklyMotionData { get; set; }
         public List<CoreMotionMonthlyData> MonthlyMotionData { get; set; }
         public CoreMotionMonthlyData ThisMonthMotionData { get; set; }
-        public int MaxDailySteps { get; set; }
+        public double MaxDailyDistance { get; set; }
         public CoreMotionData AllTimeAverageData { get; set; }
 
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
 
-        public StepsViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation, IStorageManager storage)
+        public DistanceViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation, IStorageManager storage)
         {
             commandFactory = commandFac;
             motionController = motionContr;
@@ -47,7 +47,7 @@ namespace MoveUp.ViewModels
             ThisMonthMotionData = MonthlyMotionData[MonthlyMotionData.Count - 1];
             InitializeWeeklyChart();
             InitializeMonthlyChart();
-            FindMaxSteps();
+            FindMaxDistance();
         }
 
         private void InitializeWeeklyChart()
@@ -57,12 +57,12 @@ namespace MoveUp.ViewModels
             float colorHue = 0;
             foreach (var motionData in WeeklyMotionData.Data)
             {
-                weeklyEntries.Add(new Entry(motionData.Steps)
+                weeklyEntries.Add(new Entry((float) motionData.Distance)
                 {
                     Label = motionData.Date.DayOfWeek.ToString(),
                     Color = SKColor.FromHsl(colorHue, 100, 50),
                     TextColor = SKColor.Parse("#000000"),
-                    ValueLabel = motionData.Steps.ToString()
+                    ValueLabel = motionData.Distance.ToString()
                 });
                 colorHue += 8;
             }
@@ -72,7 +72,7 @@ namespace MoveUp.ViewModels
                 Entries = weeklyEntries,
                 BackgroundColor = SKColor.Empty,
                 LabelTextSize = 25
-            };   
+            };
         }
 
         private void InitializeMonthlyChart()
@@ -82,12 +82,12 @@ namespace MoveUp.ViewModels
             float colorHue = 0;
             for (int i = MonthlyMotionData.Count - 1; i >= 0 && i > MonthlyMotionData.Count - 8; i--)
             {
-                monthlyEntries.Add(new Entry(MonthlyMotionData[i].Steps)
+                monthlyEntries.Add(new Entry((float) MonthlyMotionData[i].Distance)
                 {
                     Label = MonthlyMotionData[i].Date.Month.ToString(),
                     Color = SKColor.FromHsl(colorHue, 100, 50),
                     TextColor = SKColor.Parse("#000000"),
-                    ValueLabel = MonthlyMotionData[i].Steps.ToString()
+                    ValueLabel = MonthlyMotionData[i].Distance.ToString()
                 });
                 colorHue += 8;
             }
@@ -112,28 +112,29 @@ namespace MoveUp.ViewModels
             };
         }
 
-        private void FindMaxSteps()
+        private void FindMaxDistance()
         {
-            int maximum = 0;
+            double maximum = 0;
 
-            if (Preferences.ContainsKey("StepsMax"))
+            if (Preferences.ContainsKey("DistanceMax"))
             {
-                maximum = Preferences.Get("StepsMax", 0);
-            } else
+                maximum = Preferences.Get("DistanceMax", 0);
+            }
+            else
             {
-                Preferences.Set("StepsMax", 0);
+                Preferences.Set("DistanceMax", 0);
             }
 
             foreach (var motionData in WeeklyMotionData.Data)
             {
-                if (motionData.Steps > maximum)
+                if (motionData.Distance > maximum)
                 {
-                    maximum = motionData.Steps;
+                    maximum = motionData.Distance;
                 }
             }
 
-            Preferences.Set("StepsMax", maximum);
-            MaxDailySteps = maximum;
+            Preferences.Set("DistanceMax", maximum);
+            MaxDailyDistance = maximum;
         }
     }
 }

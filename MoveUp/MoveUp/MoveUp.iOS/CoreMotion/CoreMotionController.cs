@@ -49,7 +49,6 @@ namespace MoveUp.iOS.CoreMotion
                 motionData.Steps = pedometerData.NumberOfSteps.Int32Value;
                 motionData.Distance = pedometerData.Distance.Int32Value / 1000d;
                 motionData.Floors = pedometerData.FloorsAscended.Int32Value;
-                motionData.RefreshCalories();
             } 
         }
 
@@ -78,7 +77,6 @@ namespace MoveUp.iOS.CoreMotion
                         Distance = pedometerData.Distance.Int32Value / 1000d,
                         Floors = pedometerData.FloorsAscended.Int32Value
                     };
-                    oneDayData.RefreshCalories();
 
                     data.Add(oneDayData);
                 }

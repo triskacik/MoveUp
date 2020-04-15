@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="UTF-8"?>
 <views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
@@ -8,13 +8,12 @@
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
                 xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
                 mc:Ignorable="d"
-                d:DataContext="{d:DesignInstance viewModels:StepsViewModel}"
-                x:Class="MoveUp.Views.StepsView"
+                d:DataContext="{d:DesignInstance viewModels:DistanceViewModel}"
+                x:Class="MoveUp.Views.DistanceView"
                 BackgroundColor="{StaticResource PageBcgColor}"
                 NavigationPage.BackButtonTitle="{x:Static resources:Texts.Page_Back}">
-
     <NavigationPage.TitleView>
-        <Label Text="{x:Static resources:Texts.StepsView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
+        <Label Text="{x:Static resources:Texts.DistanceView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
     </NavigationPage.TitleView>
 
     <Grid RowSpacing="0">
@@ -31,7 +30,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding MaxDailySteps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding MaxDailyDistance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
 
@@ -40,12 +42,15 @@
                         <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                             <Image Style="{StaticResource BannerLeftIcon}"/>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Walking}" Style="{StaticResource HighlightedTextStyle}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding MotionData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                    <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                </StackLayout>
                             </StackLayout>
                             <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
                             <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
+                                <Label Text="10" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
                                 <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
                             </StackLayout>             
                         </StackLayout>
@@ -58,7 +63,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding WeeklyMotionData.AverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding WeeklyMotionData.AverageData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -72,7 +80,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding ThisMonthMotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding ThisMonthMotionData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -86,7 +97,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding AllTimeAverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding AllTimeAverageData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

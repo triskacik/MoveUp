@@ -17,7 +17,6 @@ namespace MoveUp.Models
                 foreach (CoreMotionData d in dataFeed)
                 {
                     Data[i] = d;
-                    AverageData.Calories += d.Calories;
                     AverageData.Distance += d.Distance;
                     AverageData.Floors += d.Floors;
                     AverageData.Steps += d.Steps;
@@ -31,8 +30,7 @@ namespace MoveUp.Models
                 }
             }
 
-            AverageData.Calories = AverageData.Calories / Data.Length;
-            AverageData.Distance = AverageData.Distance / Data.Length;
+            AverageData.Distance = Math.Round(AverageData.Distance / Data.Length, 3);
             AverageData.Floors = AverageData.Floors / Data.Length;
             AverageData.Steps = AverageData.Steps / Data.Length;
         }

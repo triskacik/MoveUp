@@ -8,13 +8,13 @@
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
                 xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
                 mc:Ignorable="d"
-                d:DataContext="{d:DesignInstance viewModels:StepsViewModel}"
-                x:Class="MoveUp.Views.StepsView"
+                d:DataContext="{d:DesignInstance viewModels:FloorsViewModel}"
+                x:Class="MoveUp.Views.FloorsView"
                 BackgroundColor="{StaticResource PageBcgColor}"
                 NavigationPage.BackButtonTitle="{x:Static resources:Texts.Page_Back}">
 
     <NavigationPage.TitleView>
-        <Label Text="{x:Static resources:Texts.StepsView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
+        <Label Text="{x:Static resources:Texts.FloorsView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
     </NavigationPage.TitleView>
 
     <Grid RowSpacing="0">
@@ -31,34 +31,26 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding MaxDailySteps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <Label Text="{Binding MaxDailyFloors}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
 
-                    <StackLayout Spacing="0">
                     <Frame Style="{StaticResource PrimaryBannerStyle}">
                         <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                             <Image Style="{StaticResource BannerLeftIcon}"/>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                            </StackLayout>
-                            <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
-                                <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
-                            </StackLayout>             
+                                <Label Text="{x:Static resources:Texts.SumView_Floors}" Style="{StaticResource HighlightedTextStyle}"/>
+                                <Label Text="{Binding MotionData.Floors}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                            </StackLayout>         
                         </StackLayout>
                     </Frame>
-                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
 
                     <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>
 
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding WeeklyMotionData.AverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <Label Text="{Binding WeeklyMotionData.AverageData.Floors}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -72,7 +64,7 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding ThisMonthMotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <Label Text="{Binding ThisMonthMotionData.Floors}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -86,7 +78,7 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding AllTimeAverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <Label Text="{Binding AllTimeAverageData.Floors}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

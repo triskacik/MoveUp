@@ -8,13 +8,13 @@
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
                 xmlns:charts="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
                 mc:Ignorable="d"
-                d:DataContext="{d:DesignInstance viewModels:StepsViewModel}"
-                x:Class="MoveUp.Views.StepsView"
+                d:DataContext="{d:DesignInstance viewModels:CaloriesViewModel}"
+                x:Class="MoveUp.Views.CaloriesView"
                 BackgroundColor="{StaticResource PageBcgColor}"
                 NavigationPage.BackButtonTitle="{x:Static resources:Texts.Page_Back}">
 
     <NavigationPage.TitleView>
-        <Label Text="{x:Static resources:Texts.StepsView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
+        <Label Text="{x:Static resources:Texts.CaloriesView_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}"/>
     </NavigationPage.TitleView>
 
     <Grid RowSpacing="0">
@@ -31,34 +31,35 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_BestDaily}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding MaxDailySteps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding MaxDailyCalories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
 
-                    <StackLayout Spacing="0">
                     <Frame Style="{StaticResource PrimaryBannerStyle}">
                         <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                             <Image Style="{StaticResource BannerLeftIcon}"/>
                             <StackLayout Orientation="Vertical">
-                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                            </StackLayout>
-                            <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
-                                <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
-                            </StackLayout>             
+                                <Label Text="{x:Static resources:Texts.SumView_Calories}" Style="{StaticResource HighlightedTextStyle}"/>
+                                <StackLayout Orientation="Horizontal">
+                                    <Label Text="{Binding MotionData.Calories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                    <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                </StackLayout>
+                            </StackLayout>         
                         </StackLayout>
                     </Frame>
-                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
 
                     <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>
 
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding WeeklyMotionData.AverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding WeeklyMotionData.AverageData.Calories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -72,7 +73,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding ThisMonthMotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding ThisMonthMotionData.Calories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>
@@ -86,7 +90,10 @@
                     <Frame Style="{StaticResource SecondaryBannerStyle}">
                         <StackLayout Orientation="Horizontal">
                             <Label Text="{x:Static resources:Texts.StepsView_DailyAvg}" Style="{StaticResource HighlightedTextStyle}"/>
-                            <Label Text="{Binding AllTimeAverageData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}" HorizontalOptions="EndAndExpand"/>
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                                <Label Text="{Binding AllTimeAverageData.Calories}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                <Label Text="{x:Static resources:Texts.SumView_Kcal}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                            </StackLayout>
                         </StackLayout>
                     </Frame>
                 </StackLayout>

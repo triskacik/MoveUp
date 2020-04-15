@@ -75,7 +75,7 @@
                             </StackLayout>        
                             <Image Style="{StaticResource BannerArrow}"/>
                         </StackLayout>
-                        <Button BackgroundColor="Transparent"/>
+                        <Button BackgroundColor="Transparent" Command="{Binding ToDistanceViewCom}"/>
                     </Grid> 
                 </Frame>
 
@@ -89,7 +89,7 @@
                             </StackLayout>         
                             <Image Style="{StaticResource BannerArrow}"/>
                         </StackLayout>
-                        <Button BackgroundColor="Transparent"/>
+                        <Button BackgroundColor="Transparent" Command="{Binding ToFloorsViewCom}"/>
                     </Grid>
                 </Frame>
 
@@ -107,7 +107,7 @@
                             </StackLayout>
                             <Image Style="{StaticResource BannerArrow}"/>
                         </StackLayout>
-                        <Button BackgroundColor="Transparent"/>
+                        <Button BackgroundColor="Transparent" Command="{Binding ToCaloriesViewCom}"/>
                     </Grid>
                 </Frame>
 
