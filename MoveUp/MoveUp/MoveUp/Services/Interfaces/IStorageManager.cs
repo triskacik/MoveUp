@@ -1,13 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using MoveUp.Models;
+﻿using MoveUp.Models;
+using SQLite;
 
 namespace MoveUp.Services.Interfaces
 {
     public interface IStorageManager : ISingletonService
     {
-        Task<List<CoreMotionMonthlyData>> GetMonthlyDataAsync();
-        Task<CoreMotionData> GetAllTimeAverageDataAsync();
+        TableQuery<CoreMotionData> GetCoreMotionTable();
+        void InsertCoreMotionData(CoreMotionData data);
     }
 }

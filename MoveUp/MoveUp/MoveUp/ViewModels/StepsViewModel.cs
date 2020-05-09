@@ -1,21 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Microcharts;
 using MoveUp.Factories.Interfaces;
 using MoveUp.Models;
 using MoveUp.Services.Interfaces;
 using MoveUp.ViewModels.Base;
 using SkiaSharp;
-using Xamarin.Essentials;
 
 namespace MoveUp.ViewModels
 {
     public class StepsViewModel : ViewModelBase
     {
-        private ICommandFactory commandFactory;
         private ICoreMotionController motionController;
-        private INavigationService navigationService;
-        private IStorageManager storageManager;
+        private ICoreMotionStorage storageManager;
+        private IPreferencesStorage preferencesStorage;
 
         public CoreMotionData MotionData { get; set; }
         public CoreMotionWeeklyData WeeklyMotionData { get; set; }
@@ -27,12 +24,15 @@ namespace MoveUp.ViewModels
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
 
-        public StepsViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation, IStorageManager storage)
+        public StepsViewModel(ICommandFactory commandFac,
+                              ICoreMotionController motionContr,
+                              INavigationService navigation,
+                              ICoreMotionStorage storage,
+                              IPreferencesStorage preferences) : base(navigation, commandFac)
         {
-            commandFactory = commandFac;
             motionController = motionContr;
-            navigationService = navigation;
             storageManager = storage;
+            preferencesStorage = preferences;
 
             InitializeMotionAsync();
         }
@@ -114,26 +114,23 @@ namespace MoveUp.ViewModels
 
         private void FindMaxSteps()
         {
-            int maximum = 0;
-
-            if (Preferences.ContainsKey("StepsMax"))
-            {
-                maximum = Preferences.Get("StepsMax", 0);
-            } else
-            {
-                Preferences.Set("StepsMax", 0);
-            }
+            int currentMax = preferencesStorage.GetMaxSteps();
 
             foreach (var motionData in WeeklyMotionData.Data)
             {
-                if (motionData.Steps > maximum)
+                if (motionData.Steps > currentMax)
                 {
-                    maximum = motionData.Steps;
+                    currentMax = motionData.Steps;
                 }
             }
 
-            Preferences.Set("StepsMax", maximum);
-            MaxDailySteps = maximum;
+            preferencesStorage.SetMaxSteps(currentMax);
+            MaxDailySteps = currentMax;
+        }
+
+        private async void SetTarget()
+        {
+            var target = await DisplayPromptAsync("Question 2", "What's 5 + 5?", initialValue: "10", maxLength: 2, keyboard: Keyboard.Numeric);
         }
     }
 }

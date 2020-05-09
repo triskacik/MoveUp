@@ -10,7 +10,8 @@
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:SummaryViewModel}"
                 x:Class="MoveUp.Views.SummaryView"
-                BackgroundColor="{StaticResource PageBcgColor}">
+                BackgroundColor="{StaticResource PageBcgColor}"
+                NavigationPage.HasBackButton="False">
 
     <NavigationPage.TitleView>
         <Label Text="{x:Static resources:Texts.SumView_Header}" Style="{StaticResource TopBarHeaderStyle}"/>

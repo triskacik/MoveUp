@@ -110,7 +110,7 @@
             </Grid.ColumnDefinitions>
 
             <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
-                <ImageButton Style="{StaticResource NavBarSummary}"/>
+                <ImageButton Style="{StaticResource NavBarSummary}" Command="{Binding ToSummaryViewCom}"/>
                 <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarSelectedTextStyle}"/>
             </StackLayout>
 

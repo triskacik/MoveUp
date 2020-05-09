@@ -12,10 +12,9 @@ namespace MoveUp.ViewModels
 {
     public class FloorsViewModel : ViewModelBase
     {
-        private ICommandFactory commandFactory;
         private ICoreMotionController motionController;
-        private INavigationService navigationService;
-        private IStorageManager storageManager;
+        private ICoreMotionStorage storageManager;
+        private IPreferencesStorage preferencesStorage;
 
         public CoreMotionData MotionData { get; set; }
         public CoreMotionWeeklyData WeeklyMotionData { get; set; }
@@ -27,12 +26,15 @@ namespace MoveUp.ViewModels
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
 
-        public FloorsViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation, IStorageManager storage)
+        public FloorsViewModel(ICommandFactory commandFac,
+                               ICoreMotionController motionContr,
+                               INavigationService navigation,
+                               ICoreMotionStorage storage,
+                               IPreferencesStorage preferences) : base(navigation, commandFac)
         {
-            commandFactory = commandFac;
             motionController = motionContr;
-            navigationService = navigation;
             storageManager = storage;
+            preferencesStorage = preferences;
 
             InitializeMotionAsync();
         }
@@ -114,16 +116,7 @@ namespace MoveUp.ViewModels
 
         private void FindMaxFloors()
         {
-            int maximum = 0;
-
-            if (Preferences.ContainsKey("FloorsMax"))
-            {
-                maximum = Preferences.Get("FloorsMax", 0);
-            }
-            else
-            {
-                Preferences.Set("FloorsMax", 0);
-            }
+            int maximum = preferencesStorage.GetMaxFloors();
 
             foreach (var motionData in WeeklyMotionData.Data)
             {
@@ -133,7 +126,7 @@ namespace MoveUp.ViewModels
                 }
             }
 
-            Preferences.Set("FloorsMax", maximum);
+            preferencesStorage.SetMaxFloors(maximum);
             MaxDailyFloors = maximum;
         }
     }

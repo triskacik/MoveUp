@@ -12,10 +12,9 @@ namespace MoveUp.ViewModels
 {
     public class DistanceViewModel : ViewModelBase
     {
-        private ICommandFactory commandFactory;
         private ICoreMotionController motionController;
-        private INavigationService navigationService;
-        private IStorageManager storageManager;
+        private ICoreMotionStorage storageManager;
+        private IPreferencesStorage preferencesStorage;
 
         public CoreMotionData MotionData { get; set; }
         public CoreMotionWeeklyData WeeklyMotionData { get; set; }
@@ -27,12 +26,15 @@ namespace MoveUp.ViewModels
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
 
-        public DistanceViewModel(ICommandFactory commandFac, ICoreMotionController motionContr, INavigationService navigation, IStorageManager storage)
+        public DistanceViewModel(ICommandFactory commandFac,
+                                 ICoreMotionController motionContr,
+                                 INavigationService navigation,
+                                 ICoreMotionStorage storage,
+                                 IPreferencesStorage preferences) : base(navigation, commandFac)
         {
-            commandFactory = commandFac;
             motionController = motionContr;
-            navigationService = navigation;
             storageManager = storage;
+            preferencesStorage = preferences;
 
             InitializeMotionAsync();
         }
@@ -114,16 +116,7 @@ namespace MoveUp.ViewModels
 
         private void FindMaxDistance()
         {
-            double maximum = 0;
-
-            if (Preferences.ContainsKey("DistanceMax"))
-            {
-                maximum = Preferences.Get("DistanceMax", 0);
-            }
-            else
-            {
-                Preferences.Set("DistanceMax", 0);
-            }
+            double maximum = preferencesStorage.GetMaxDistance();
 
             foreach (var motionData in WeeklyMotionData.Data)
             {
@@ -133,7 +126,7 @@ namespace MoveUp.ViewModels
                 }
             }
 
-            Preferences.Set("DistanceMax", maximum);
+            preferencesStorage.SetMaxDistance(maximum);
             MaxDailyDistance = maximum;
         }
     }

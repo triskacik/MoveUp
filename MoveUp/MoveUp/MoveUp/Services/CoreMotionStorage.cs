@@ -1,47 +1,39 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Threading.Tasks;
 using MoveUp.Models;
 using MoveUp.Services.Interfaces;
-using SQLite;
-using Xamarin.Forms;
+
 
 namespace MoveUp.Services
 {
-    public class SqLiteStorageManager : IStorageManager
+    public class CoreMotionStorage : ICoreMotionStorage
     {
-        private string path;
-        private SQLiteConnection connection;
-
         private ICoreMotionController motionController;
+        private IStorageManager storage;
 
-        public SqLiteStorageManager(ICoreMotionController motionContr)
+        public CoreMotionStorage(ICoreMotionController motionContr, IStorageManager storageManager)
         {
             motionController = motionContr;
-
-            path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db3");
-
-            connection = new SQLiteConnection(path);
-            connection.CreateTable<CoreMotionData>();
+            storage = storageManager;
         }
 
         private async Task RefreshDataAsync( )
         {
             var weeklyData = await motionController.GetWeeklyDataAsync();
 
-            if (connection.Table<CoreMotionData>().Count() == 0)
+            if (storage.GetCoreMotionTable().Count() == 0)
             {
                 foreach (var data in weeklyData.Data)
                 {
                     if (data.Date < DateTime.Today)
                     {
-                        connection.Insert(data);
+                        storage.InsertCoreMotionData(data);
                     } 
                 }
             } else
             {
-                var lastEntryDate = connection.Table<CoreMotionData>().OrderByDescending(data => data.Date).First().Date;
+                var lastEntryDate = storage.GetCoreMotionTable().OrderByDescending(data => data.Date).First().Date;
 
                 if (lastEntryDate.Date < DateTime.Today)
                 {
@@ -49,7 +41,7 @@ namespace MoveUp.Services
                     {
                         if (data.Date.Date > lastEntryDate.Date && data.Date < DateTime.Today)
                         {
-                            connection.Insert(data);
+                            storage.InsertCoreMotionData(data);
                         }
                     }
                 }
@@ -62,7 +54,7 @@ namespace MoveUp.Services
 
             List<CoreMotionMonthlyData> data = new List<CoreMotionMonthlyData>();
 
-            foreach (var entry in connection.Table<CoreMotionData>().OrderBy(d => d.Date))
+            foreach (var entry in storage.GetCoreMotionTable().OrderBy(d => d.Date))
             {
                 if (data.Count == 0)
                 {
@@ -101,7 +93,7 @@ namespace MoveUp.Services
             int floors = 0;
             int entries = 0;
 
-            foreach (var entry in connection.Table<CoreMotionData>())
+            foreach (var entry in storage.GetCoreMotionTable())
             {
                 entries += 1;
                 steps += entry.Steps;
