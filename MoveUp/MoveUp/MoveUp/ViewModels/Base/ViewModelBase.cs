@@ -3,6 +3,7 @@ using System.Runtime.CompilerServices;
 using MoveUp.Services.Interfaces;
 using System.Windows.Input;
 using MoveUp.Factories.Interfaces;
+using Xamarin.Forms;
 
 namespace MoveUp.ViewModels.Base
 {

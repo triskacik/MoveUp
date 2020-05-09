@@ -24,6 +24,16 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
+        <ContentView x:Name="popupLoginView" BackgroundColor="#C0808080" Padding="10, 0" IsVisible="false" AbsoluteLayout.LayoutBounds="0, 0, 1, 1" AbsoluteLayout.LayoutFlags="All">
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                    <StackLayout Orientation="Vertical" HeightRequest="200" WidthRequest="300" BackgroundColor="White">
+                        <Entry Margin="20,20,20,10" Placeholder="Enter Username"></Entry>
+                        <Entry Margin="20,0,20,0" Placeholder="Enter Password"></Entry>
+                        <Button Margin="20,0,20,0" Text="Login"></Button>
+                    </StackLayout>
+                </StackLayout>
+        </ContentView>
+
         <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
             <StackLayout Padding="0">
                 <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
@@ -36,21 +46,27 @@
                     </Frame>
 
                     <StackLayout Spacing="0">
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                            <Image Style="{StaticResource BannerLeftIcon}"/>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                        <Frame Style="{StaticResource PrimaryBannerStyle}">
+                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                                <Image Style="{StaticResource BannerLeftIcon}"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Steps}" Style="{StaticResource HighlightedTextStyle}"/>
+                                    <Label Text="{Binding MotionData.Steps}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                </StackLayout>
+                                <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
+                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Label Text="{Binding StepsTarget}" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <Stepper Maximum="100000" Increment="500" Value="{Binding StepsTarget}" HorizontalOptions="CenterAndExpand"/>
+                                </StackLayout>
                             </StackLayout>
-                            <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
-                                <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
-                            </StackLayout>             
+                        </Frame>
+                        <StackLayout Orientation="Horizontal">
+                            <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" Command="{Binding SetTargetCom}" HorizontalOptions="EndAndExpand"/>
                         </StackLayout>
-                    </Frame>
-                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
+                        
                     </StackLayout>
 
                     <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>

@@ -1,17 +1,10 @@
 ﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/ViewModels/StepsViewModel.cs">
-    <Files>
-      <File FileName="MoveUp/MoveUp/ViewModels/StepsViewModel.cs" Line="129" Column="10" />
-    </Files>
+  <MonoDevelop.Ide.Workbench>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MoveUp" expanded="True">
-            <Node name="MoveUp" expanded="True">
-              <Node name="ViewModels" expanded="True">
-                <Node name="StepsViewModel.cs" selected="True" />
-              </Node>
-            </Node>
+            <Node name="MoveUp" expanded="True" />
           </Node>
         </State>
       </Pad>

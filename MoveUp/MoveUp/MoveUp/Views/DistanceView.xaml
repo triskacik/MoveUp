@@ -38,24 +38,27 @@
                     </Frame>
 
                     <StackLayout Spacing="0">
-                    <Frame Style="{StaticResource PrimaryBannerStyle}">
-                        <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                            <Image Style="{StaticResource BannerLeftIcon}"/>
-                            <StackLayout Orientation="Vertical">
-                                <Label Text="{x:Static resources:Texts.SumView_Walking}" Style="{StaticResource HighlightedTextStyle}"/>
-                                <StackLayout Orientation="Horizontal">
-                                    <Label Text="{Binding MotionData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
-                                    <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                        <Frame Style="{StaticResource PrimaryBannerStyle}">
+                            <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                                <Image Style="{StaticResource BannerLeftIcon}"/>
+                                <StackLayout Orientation="Vertical">
+                                    <Label Text="{x:Static resources:Texts.SumView_Walking}" Style="{StaticResource HighlightedTextStyle}"/>
+                                    <StackLayout Orientation="Horizontal">
+                                        <Label Text="{Binding MotionData.Distance}" Style="{StaticResource DisplayedNumberTextStyle}"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                                    </StackLayout>
+                                </StackLayout>
+                                <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
+                                <StackLayout HorizontalOptions="CenterAndExpand">
+                                    <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
+                                        <Label Text="{Binding DistanceTarget}" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
+                                        <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
+                                    </StackLayout>
+                                    <Stepper Maximum="50" Increment="0.5" Value="{Binding DistanceTarget}" HorizontalOptions="CenterAndExpand"/>
                                 </StackLayout>
                             </StackLayout>
-                            <Label Style="{StaticResource ThickVerticalLineStyle}" HorizontalOptions="CenterAndExpand"/>
-                            <StackLayout Orientation="Horizontal" HorizontalOptions="CenterAndExpand">
-                                <Label Text="10" Style="{StaticResource SecondaryNumberTextStyle}" VerticalOptions="Center"/>
-                                <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="Center"/>
-                            </StackLayout>             
-                        </StackLayout>
-                    </Frame>
-                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="EndAndExpand"/>
+                        </Frame>
+                        <Button Text="{x:Static resources:Texts.StepsView_SetTarget}" Style="{StaticResource TextButtonStyle}" Command="{Binding SetTargetCom}" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
 
                     <Label Text="{x:Static resources:Texts.StepsView_WeekHeader}" Style="{StaticResource HeaderStyle}"/>

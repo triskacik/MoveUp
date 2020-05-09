@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Input;
 using Microcharts;
 using MoveUp.Factories.Interfaces;
 using MoveUp.Models;
@@ -21,10 +22,13 @@ namespace MoveUp.ViewModels
         public List<CoreMotionMonthlyData> MonthlyMotionData { get; set; }
         public CoreMotionMonthlyData ThisMonthMotionData { get; set; }
         public double MaxDailyDistance { get; set; }
+        public double DistanceTarget { get; set; }
         public CoreMotionData AllTimeAverageData { get; set; }
 
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
+
+        public ICommand SetTargetCom { get; set; }
 
         public DistanceViewModel(ICommandFactory commandFac,
                                  ICoreMotionController motionContr,
@@ -35,6 +39,10 @@ namespace MoveUp.ViewModels
             motionController = motionContr;
             storageManager = storage;
             preferencesStorage = preferences;
+
+            SetTargetCom = commandFac.CreateCommand(SetTarget);
+
+            DistanceTarget = preferencesStorage.GetDistanceTarget();
 
             InitializeMotionAsync();
         }
@@ -56,17 +64,19 @@ namespace MoveUp.ViewModels
         {
             List<Entry> weeklyEntries = new List<Entry>();
 
-            float colorHue = 0;
             foreach (var motionData in WeeklyMotionData.Data)
             {
+                float colorHue = (float) (motionData.Distance / DistanceTarget) * 100;
+                if (colorHue > 100)
+                    colorHue = 100;
+
                 weeklyEntries.Add(new Entry((float) motionData.Distance)
                 {
                     Label = motionData.Date.DayOfWeek.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = motionData.Distance.ToString()
                 });
-                colorHue += 8;
             }
 
             WeekChart = new BarChart()
@@ -81,17 +91,19 @@ namespace MoveUp.ViewModels
         {
             List<Entry> monthlyEntries = new List<Entry>();
 
-            float colorHue = 0;
             for (int i = MonthlyMotionData.Count - 1; i >= 0 && i > MonthlyMotionData.Count - 8; i--)
             {
+                float colorHue = (float) (MonthlyMotionData[i].Distance / DistanceTarget) * 100;
+                if (colorHue > 100)
+                    colorHue = 100;
+
                 monthlyEntries.Add(new Entry((float) MonthlyMotionData[i].Distance)
                 {
                     Label = MonthlyMotionData[i].Date.Month.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = MonthlyMotionData[i].Distance.ToString()
                 });
-                colorHue += 8;
             }
 
             int emptySlots = 7 - monthlyEntries.Count;
@@ -99,7 +111,7 @@ namespace MoveUp.ViewModels
             {
                 monthlyEntries.Add(new Entry(0)
                 {
-                    Color = SKColor.FromHsl(0, 100, 50),
+                    Color = SKColor.FromHsl(0, 100, 45),
                     TextColor = SKColor.Parse("#000000")
                 });
             }
@@ -128,6 +140,13 @@ namespace MoveUp.ViewModels
 
             preferencesStorage.SetMaxDistance(maximum);
             MaxDailyDistance = maximum;
+        }
+
+        private void SetTarget()
+        {
+            preferencesStorage.SetDistanceTarget(DistanceTarget);
+            InitializeWeeklyChart();
+            InitializeMonthlyChart();
         }
     }
 }

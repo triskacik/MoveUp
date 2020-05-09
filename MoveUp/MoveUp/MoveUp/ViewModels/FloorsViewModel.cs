@@ -62,7 +62,7 @@ namespace MoveUp.ViewModels
                 weeklyEntries.Add(new Entry(motionData.Floors)
                 {
                     Label = motionData.Date.DayOfWeek.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = motionData.Floors.ToString()
                 });
@@ -81,17 +81,17 @@ namespace MoveUp.ViewModels
         {
             List<Entry> monthlyEntries = new List<Entry>();
 
-            float colorHue = 0;
+            float colorHue = 48;
             for (int i = MonthlyMotionData.Count - 1; i >= 0 && i > MonthlyMotionData.Count - 8; i--)
             {
                 monthlyEntries.Add(new Entry(MonthlyMotionData[i].Floors)
                 {
                     Label = MonthlyMotionData[i].Date.Month.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = MonthlyMotionData[i].Floors.ToString()
                 });
-                colorHue += 8;
+                colorHue -= 8;
             }
 
             int emptySlots = 7 - monthlyEntries.Count;
@@ -99,7 +99,7 @@ namespace MoveUp.ViewModels
             {
                 monthlyEntries.Add(new Entry(0)
                 {
-                    Color = SKColor.FromHsl(0, 100, 50),
+                    Color = SKColor.FromHsl(0, 100, 45),
                     TextColor = SKColor.Parse("#000000")
                 });
             }

@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Windows.Input;
 using Microcharts;
 using MoveUp.Factories.Interfaces;
 using MoveUp.Models;
@@ -19,10 +20,13 @@ namespace MoveUp.ViewModels
         public List<CoreMotionMonthlyData> MonthlyMotionData { get; set; }
         public CoreMotionMonthlyData ThisMonthMotionData { get; set; }
         public int MaxDailySteps { get; set; }
+        public int StepsTarget { get; set; }
         public CoreMotionData AllTimeAverageData { get; set; }
 
         public Chart WeekChart { get; set; }
         public Chart MonthChart { get; set; }
+
+        public ICommand SetTargetCom { get; set; }
 
         public StepsViewModel(ICommandFactory commandFac,
                               ICoreMotionController motionContr,
@@ -33,6 +37,10 @@ namespace MoveUp.ViewModels
             motionController = motionContr;
             storageManager = storage;
             preferencesStorage = preferences;
+
+            SetTargetCom = commandFac.CreateCommand(SetTarget);
+
+            StepsTarget = preferencesStorage.GetStepsTarget();
 
             InitializeMotionAsync();
         }
@@ -54,17 +62,19 @@ namespace MoveUp.ViewModels
         {
             List<Entry> weeklyEntries = new List<Entry>();
 
-            float colorHue = 0;
             foreach (var motionData in WeeklyMotionData.Data)
             {
+                float colorHue = (float) motionData.Steps / StepsTarget * 100;
+                if (colorHue > 100)
+                    colorHue = 100;
+
                 weeklyEntries.Add(new Entry(motionData.Steps)
                 {
                     Label = motionData.Date.DayOfWeek.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = motionData.Steps.ToString()
                 });
-                colorHue += 8;
             }
 
             WeekChart = new BarChart()
@@ -79,17 +89,19 @@ namespace MoveUp.ViewModels
         {
             List<Entry> monthlyEntries = new List<Entry>();
 
-            float colorHue = 0;
             for (int i = MonthlyMotionData.Count - 1; i >= 0 && i > MonthlyMotionData.Count - 8; i--)
             {
+                float colorHue = (float) MonthlyMotionData[i].Steps / StepsTarget * 100;
+                if (colorHue > 100)
+                    colorHue = 100;
+
                 monthlyEntries.Add(new Entry(MonthlyMotionData[i].Steps)
                 {
                     Label = MonthlyMotionData[i].Date.Month.ToString(),
-                    Color = SKColor.FromHsl(colorHue, 100, 50),
+                    Color = SKColor.FromHsl(colorHue, 100, 45),
                     TextColor = SKColor.Parse("#000000"),
                     ValueLabel = MonthlyMotionData[i].Steps.ToString()
                 });
-                colorHue += 8;
             }
 
             int emptySlots = 7 - monthlyEntries.Count;
@@ -97,7 +109,7 @@ namespace MoveUp.ViewModels
             {
                 monthlyEntries.Add(new Entry(0)
                 {
-                    Color = SKColor.FromHsl(0, 100, 50),
+                    Color = SKColor.FromHsl(0, 100, 45),
                     TextColor = SKColor.Parse("#000000")
                 });
             }
@@ -128,9 +140,11 @@ namespace MoveUp.ViewModels
             MaxDailySteps = currentMax;
         }
 
-        private async void SetTarget()
+        private void SetTarget()
         {
-            var target = await DisplayPromptAsync("Question 2", "What's 5 + 5?", initialValue: "10", maxLength: 2, keyboard: Keyboard.Numeric);
+            preferencesStorage.SetStepsTarget(StepsTarget);
+            InitializeWeeklyChart();
+            InitializeMonthlyChart();
         }
     }
 }

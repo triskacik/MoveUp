@@ -5,7 +5,7 @@ using Xamarin.Forms;
 
 namespace MoveUp.Views
 {
-    public partial class StepsView
+    public partial class StepsView 
     {
         public StepsView(StepsViewModel stepsViewModel)
         {

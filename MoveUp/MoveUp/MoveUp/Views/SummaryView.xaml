@@ -24,8 +24,6 @@
             <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
 
-
-
         <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
             <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
 
@@ -42,7 +40,7 @@
                                     <Label Style="{StaticResource ThickVerticalLineStyle}"/>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="10 000" Style="{StaticResource SecondaryNumberTextStyle}"/>
+                                        <Label Text="{Binding StepsTarget}" Style="{StaticResource SecondaryNumberTextStyle}"/>
                                         <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                                     </StackLayout>
                                 </StackLayout>
@@ -69,7 +67,7 @@
                                     <Label Style="{StaticResource ThickVerticalLineStyle}"/>
 
                                     <StackLayout Orientation="Horizontal">
-                                        <Label Text="10" Style="{StaticResource SecondaryNumberTextStyle}"/>
+                                        <Label Text="{Binding DistanceTarget}" Style="{StaticResource SecondaryNumberTextStyle}"/>
                                         <Label Text="{x:Static resources:Texts.SumView_Target}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                                     </StackLayout>
                                 </StackLayout>
