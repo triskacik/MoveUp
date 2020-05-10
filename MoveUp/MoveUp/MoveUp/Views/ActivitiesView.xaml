@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:views="clr-namespace:MoveUp.Views"
+                xmlns:resources="clr-namespace:MoveUp.Resources"
+                xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:ActivitiesViewModel}"
+                x:Class="MoveUp.Views.ActivitiesView"
+                BackgroundColor="{StaticResource PageBcgColor}"
+                NavigationPage.HasBackButton="False">
+
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:Texts.Activities_Header}" Style="{StaticResource TopBarHeaderStyle}"/>
+    </NavigationPage.TitleView>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
+            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+
+                <Label Text="{x:Static resources:Texts.Activities_StartNew}" Style="{StaticResource HeaderStyle}"/>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{StaticResource ActivitiesBannerStyle}">
+                        <Grid>
+                            <StackLayout>
+                                <Image Style="{StaticResource HikingIcon}"/>
+                                <Label Text="{x:Static resources:Texts.Activities_Hiking}" Style="{StaticResource HighlightedTextStyle}" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <Button BackgroundColor="Transparent" Command="{Binding ToHikingViewCom}"/>
+                        </Grid>
+                    </Frame>
+
+                    <Frame Style="{StaticResource ActivitiesBannerStyle}" HorizontalOptions="EndAndExpand">
+                        <Grid>
+                            <StackLayout>
+                                <Image Style="{StaticResource RunningIcon}"/>
+                                <Label Text="{x:Static resources:Texts.Activities_Running}" Style="{StaticResource HighlightedTextStyle}" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <Button BackgroundColor="Transparent"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <StackLayout Orientation="Horizontal">
+                    <Frame Style="{StaticResource ActivitiesBannerStyle}">
+                        <Grid>
+                            <StackLayout>
+                                <Image Style="{StaticResource CyclingIcon}"/>
+                                <Label Text="{x:Static resources:Texts.Activities_Cycling}" Style="{StaticResource HighlightedTextStyle}" HorizontalOptions="CenterAndExpand"/>
+                            </StackLayout>
+                            <Button BackgroundColor="Transparent"/>
+                        </Grid>
+                    </Frame>
+                </StackLayout>
+
+                <Label Text="{x:Static resources:Texts.Activities_Saved}" Style="{StaticResource HeaderStyle}"/>
+
+                <Label Text="{x:Static resources:Texts.Activities_Scheduled}" Style="{StaticResource HeaderStyle}"/>
+
+                <StackLayout>
+                    <Button Text="{x:Static resources:Texts.Activities_ScheduleOneTime}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="Start" HeightRequest="25"/>
+                    <Button Text="{x:Static resources:Texts.Activities_ScheduleRepeating}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="Start" HeightRequest="25"/>
+                </StackLayout>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+
+        <Grid Grid.Row="2" Style="{StaticResource NavBarGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarSummary}" Command="{Binding ToSummaryViewCom}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarActivities}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarSelectedTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</views:ViewBase>

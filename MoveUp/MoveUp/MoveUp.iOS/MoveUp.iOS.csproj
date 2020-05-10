@@ -75,6 +75,7 @@
     <Compile Include="CoreMotion\CoreMotionController.cs" />
     <Compile Include="CoreMotion\Extensions\DateConverter.cs" />
     <Compile Include="Installers\iOSInstaller.cs" />
+    <Compile Include="CoreMotion\AltitudeController.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Flame.imageset\Contents.json">
@@ -150,6 +151,16 @@
     <ImageAsset Include="Assets.xcassets\arrow.imageset\arrow.png">
       <Visible>false</Visible>
     </ImageAsset>
+    <ImageAsset Include="Assets.xcassets\hiking.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\hiking.imageset\hiking-solid.png" />
+    <ImageAsset Include="Assets.xcassets\running.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\running.imageset\running-solid.png" />
+    <ImageAsset Include="Assets.xcassets\cycling.imageset\biking-solid.png" />
+    <ImageAsset Include="Assets.xcassets\cycling.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\start.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\stop.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\stop.imageset\stop-circle-regular.png" />
+    <ImageAsset Include="Assets.xcassets\start.imageset\play-circle-regular.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -195,5 +206,10 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Assets.xcassets\arrow.imageset\" />
+    <Folder Include="Assets.xcassets\hiking.imageset\" />
+    <Folder Include="Assets.xcassets\running.imageset\" />
+    <Folder Include="Assets.xcassets\cycling.imageset\" />
+    <Folder Include="Assets.xcassets\start.imageset\" />
+    <Folder Include="Assets.xcassets\stop.imageset\" />
   </ItemGroup>
 </Project>

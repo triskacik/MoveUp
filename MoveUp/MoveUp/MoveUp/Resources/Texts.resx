@@ -153,6 +153,7 @@
   <data name="SumView.Walking" xml:space="preserve">
     <value>Walking Distance</value>
   </data>
+    
   <data name="StepsView.Header" xml:space="preserve">
     <value>Steps</value>
   </data>
@@ -171,19 +172,111 @@
   <data name="StepsView.DailyAvg" xml:space="preserve">
     <value>Daily average</value>
   </data>
+    
   <data name="Page.Back" xml:space="preserve">
     <value>back</value>
   </data>  
+    
   <data name="StepsView.AllTime" xml:space="preserve">
     <value>All Time</value>
   </data>
+    
   <data name="DistanceView.Header" xml:space="preserve">
     <value>Walking Distance</value>
   </data>
+    
   <data name="FloorsView.Header" xml:space="preserve">
     <value>Floors Climbed</value>
   </data>
+    
   <data name="CaloriesView.Header" xml:space="preserve">
     <value>Calories Burned</value>
+  </data>
+    
+  <data name="Activities.Header" xml:space="preserve">
+    <value>Activities</value>
+  </data>
+  <data name="Activities.Hiking" xml:space="preserve">
+    <value>Hiking</value>
+  </data>
+  <data name="Activities.Running" xml:space="preserve">
+    <value>Running</value>
+  </data>
+  <data name="Activities.Cycling" xml:space="preserve">
+    <value>Cycling</value>
+  </data>
+  <data name="Activities.StartNew" xml:space="preserve">
+    <value>Start new Activity</value>
+  </data>
+  <data name="Activities.Saved" xml:space="preserve">
+    <value>Saved activity records</value>
+  </data>
+  <data name="Activities.Date" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="Activities.Duration" xml:space="preserve">
+    <value>Duration</value>
+  </data>
+  <data name="Activities.View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Activities.Scheduled" xml:space="preserve">
+    <value>Scheduled Activities</value>
+  </data>
+  <data name="Activities.ScheduleOneTime" xml:space="preserve">
+    <value>schedule one-time activity</value>
+  </data>
+  <data name="Activities.ScheduleRepeating" xml:space="preserve">
+    <value>schedule repeating activity</value>
+  </data>
+  <data name="Activities.Time" xml:space="preserve">
+    <value>Time</value>
+  </data>
+    
+  <data name="Activities.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="Activities.Start" xml:space="preserve">
+    <value>Start</value>
+  </data>
+  <data name="Activities.Stop" xml:space="preserve">
+    <value>Stop</value>
+  </data>
+  <data name="Activities.Finish" xml:space="preserve">
+    <value>Finish</value>
+  </data>
+  <data name="Activities.Save" xml:space="preserve">
+    <value>Save</value>
+  </data>
+   <data name="Activities.Discard" xml:space="preserve">
+    <value>Discard</value>
+  </data>
+  <data name="Activities.Kmh" xml:space="preserve">
+    <value>km/h</value>
+  </data>
+  <data name="Activities.Meter" xml:space="preserve">
+    <value>m</value>
+  </data>
+    
+  <data name="Hiking.Header" xml:space="preserve">
+    <value>Hiking</value>
+  </data>
+  <data name="Hiking.Duration" xml:space="preserve">
+    <value>Duration:</value>
+  </data>
+  <data name="Hiking.Distance" xml:space="preserve">
+    <value>Distance:</value>
+  </data>
+  <data name="Hiking.AvgSpeed" xml:space="preserve">
+    <value>Average Speed:</value>
+  </data>
+  <data name="Hiking.Elevation" xml:space="preserve">
+    <value>Elevation:</value>
+  </data>
+  <data name="Hiking.Pace" xml:space="preserve">
+    <value>Steps per Second:</value>
+  </data>
+  <data name="Hiking.CurSpeed" xml:space="preserve">
+    <value>Current Speed:</value>
   </data>
 </root>

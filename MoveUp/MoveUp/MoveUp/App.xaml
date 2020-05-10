@@ -22,6 +22,7 @@
 
             <!-- TextSize Resources Here -->
             <x:Double x:Key="HeadlineTextSize">25</x:Double>
+            <x:Double x:Key="PrimaryTextSizeBold">20</x:Double>
             <x:Double x:Key="PrimaryTextSize">17</x:Double>
             <x:Double x:Key="SecondaryTextSize">15</x:Double>
             <x:Double x:Key="DisplayNumberTextSize">20</x:Double>
@@ -94,6 +95,8 @@
             <x:Int32 x:Key="ThinLineWidth">1</x:Int32>
             <x:Int32 x:Key="ThickLineWidth">3</x:Int32>
 
+            <x:Double x:Key="ActivitiesBannerWidth">140</x:Double>
+
             <x:Double x:Key="StackLayoutPrimarySpacing">20</x:Double>
             <x:Double x:Key="StackLayoutSecondarySpacing">10</x:Double>
             <x:Double x:Key="BannerStackPrimarySpacing">15</x:Double>
@@ -101,6 +104,8 @@
 
             <x:Double x:Key="SmallIconHeight">20</x:Double>
             <x:Double x:Key="LargeIconHeight">40</x:Double>
+            <x:Double x:Key="ActivitiesIconHeight">100</x:Double>
+            <x:Double x:Key="ActivitiesIconHeightSmall">25</x:Double>
 
             <x:Double x:Key="MapHeight">500</x:Double>
 
@@ -147,6 +152,18 @@
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
                 <Setter Property="FontSize" Value="{StaticResource SecondaryTextSize}"/>
                 <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
+            </Style>
+
+            <Style x:Key="PrimaryTextStyleBold" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource PrimaryTextSizeBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
+            </Style>
+
+            <Style x:Key="PrimaryNumberStyleBold" TargetType="Label">
+                <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
+                <Setter Property="FontSize" Value="{StaticResource PrimaryTextSizeBold}"/>
+                <Setter Property="FontFamily" Value="{StaticResource BoldFont}"/>
             </Style>
 
             <Style x:Key="SecondaryTextStyle" TargetType="Label">
@@ -202,6 +219,10 @@
                 <Setter Property="Padding" Value="{StaticResource SecondaryBannerPadding}"/>
             </Style>
 
+            <Style x:Key="ActivitiesBannerStyle" TargetType="Frame" BasedOn="{StaticResource PrimaryBannerStyle}">
+                <Setter Property="WidthRequest" Value="{StaticResource ActivitiesBannerWidth}"/>
+            </Style>
+
             <!-- Image Styles Here -->
             <Style x:Key="SmallImage" TargetType="Image">
                 <Setter Property="Aspect" Value="AspectFit"/>
@@ -213,6 +234,16 @@
                 <Setter Property="HeightRequest" Value="{StaticResource LargeIconHeight}"/>
             </Style>
 
+            <Style x:Key="ActivitiesImage" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="HeightRequest" Value="{StaticResource ActivitiesIconHeight}"/>
+            </Style>
+
+            <Style x:Key="ActivitiesImageSmall" TargetType="Image">
+                <Setter Property="Aspect" Value="AspectFit"/>
+                <Setter Property="HeightRequest" Value="{StaticResource ActivitiesIconHeightSmall}"/>
+            </Style>
+
             <Style x:Key="BannerLeftIcon" TargetType="Image" BasedOn="{StaticResource SmallImage}">
                 <Setter Property="Source" Value="flame"/>
                 <Setter Property="VerticalOptions" Value="Start"/>
@@ -221,6 +252,30 @@
             <Style x:Key="BannerArrow" TargetType="Image" BasedOn="{StaticResource LargeImage}">
                 <Setter Property="Source" Value="arrow"/>
                 <Setter Property="HorizontalOptions" Value="EndAndExpand"/>
+            </Style>
+
+            <Style x:Key="HikingIcon" TargetType="Image" BasedOn="{StaticResource ActivitiesImage}">
+                <Setter Property="Source" Value="hiking"/>
+            </Style>
+
+            <Style x:Key="RunningIcon" TargetType="Image" BasedOn="{StaticResource ActivitiesImage}">
+                <Setter Property="Source" Value="running"/>
+            </Style>
+
+            <Style x:Key="CyclingIcon" TargetType="Image" BasedOn="{StaticResource ActivitiesImage}">
+                <Setter Property="Source" Value="cycling"/>
+            </Style>
+
+            <Style x:Key="HikingIconSmall" TargetType="Image" BasedOn="{StaticResource ActivitiesImageSmall}">
+                <Setter Property="Source" Value="hiking"/>
+            </Style>
+
+            <Style x:Key="RunningIconSmall" TargetType="Image" BasedOn="{StaticResource ActivitiesImageSmall}">
+                <Setter Property="Source" Value="running"/>
+            </Style>
+
+            <Style x:Key="CyclingIconSmall" TargetType="Image" BasedOn="{StaticResource ActivitiesImageSmall}">
+                <Setter Property="Source" Value="cycling"/>
             </Style>
 
             <!-- Image Buttons Here -->
@@ -266,6 +321,10 @@
                 <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
                 <Setter Property="FontSize" Value="{StaticResource SecondaryTextSize}"/>
                 <Setter Property="TextColor" Value="{StaticResource NavBarSelectedTextColor}"/>
+            </Style>
+
+            <Style x:Key="LargeTextButtonStyle" TargetType="Button" BasedOn="{StaticResource TextButtonStyle}">
+                <Setter Property="FontSize" Value="{StaticResource PrimaryTextSizeBold}"/>
             </Style>
 
 

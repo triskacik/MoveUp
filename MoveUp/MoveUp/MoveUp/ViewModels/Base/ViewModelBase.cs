@@ -14,10 +14,14 @@ namespace MoveUp.ViewModels.Base
         public event PropertyChangedEventHandler PropertyChanged;
 
         public ICommand ToSummaryViewCom { get; set; }
+        public ICommand ToActivitiesViewCom { get; set; }
+
         public ICommand ToStepsViewCom { get; set; }
         public ICommand ToDistanceViewCom { get; set; }
         public ICommand ToFloorsViewCom { get; set; }
         public ICommand ToCaloriesViewCom { get; set; }
+
+        public ICommand ToHikingViewCom { get; set; }
 
         public ViewModelBase(INavigationService navigation, ICommandFactory commandFac)
         {
@@ -25,10 +29,14 @@ namespace MoveUp.ViewModels.Base
             commandFactory = commandFac;
 
             ToSummaryViewCom = commandFactory.CreateCommand(ToSummaryView);
+            ToActivitiesViewCom = commandFactory.CreateCommand(ToActivitiesView);
+
             ToStepsViewCom = commandFactory.CreateCommand(ToStepsView);
             ToDistanceViewCom = commandFactory.CreateCommand(ToDistanceView);
             ToFloorsViewCom = commandFactory.CreateCommand(ToFloorsView);
             ToCaloriesViewCom = commandFactory.CreateCommand(ToCaloriesView);
+
+            ToHikingViewCom = commandFactory.CreateCommand(ToHikingView);
         }
 
         protected virtual void OnPropertyChanged([CallerMemberName] string propertyName = null)
@@ -39,6 +47,11 @@ namespace MoveUp.ViewModels.Base
         private void ToSummaryView()
         {
             navigationService.PushAsync<SummaryViewModel>();
+        }
+
+        private void ToActivitiesView()
+        {
+            navigationService.PushAsync<ActivitiesViewModel>();
         }
 
         private void ToStepsView()
@@ -59,6 +72,11 @@ namespace MoveUp.ViewModels.Base
         private void ToCaloriesView()
         {
             navigationService.PushAsync<CaloriesViewModel>();
+        }
+
+        private void ToHikingView()
+        {
+            navigationService.PushAsync<HikingViewModel>();
         }
     }
 }

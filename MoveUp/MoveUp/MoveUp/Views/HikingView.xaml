@@ -1,0 +1,118 @@
+﻿<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:views="clr-namespace:MoveUp.Views"
+                xmlns:resources="clr-namespace:MoveUp.Resources"
+                xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
+                xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:HikingViewModel}"
+                x:Class="MoveUp.Views.HikingView"
+                BackgroundColor="{StaticResource PageBcgColor}">
+
+    <NavigationPage.TitleView>
+        <StackLayout Orientation="Horizontal">
+            <Label Text="{x:Static resources:Texts.Hiking_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}" TextColor="{Binding HeaderColor}" VerticalOptions="CenterAndExpand"/>
+            <Image Style="{StaticResource HikingIconSmall}" VerticalOptions="CenterAndExpand"/>
+        </StackLayout>
+    </NavigationPage.TitleView>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
+            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Label Text="{x:Static resources:Texts.Hiking_Duration}" Style="{StaticResource PrimaryTextStyleBold}"/>
+                        <Label Text="{Binding ActivityData.DurationString}" Style="{StaticResource PrimaryNumberStyleBold}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Label Text="{x:Static resources:Texts.Hiking_Distance}" Style="{StaticResource PrimaryTextStyleBold}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Label Text="{Binding ActivityData.Distance}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Label Text="{x:Static resources:Texts.Hiking_AvgSpeed}" Style="{StaticResource PrimaryTextStyleBold}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Label Text="{Binding ActivityData.AvgSpeed}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{x:Static resources:Texts.Activities_Kmh}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Label Text="{x:Static resources:Texts.Hiking_Pace}" Style="{StaticResource PrimaryTextStyleBold}"/>
+                        <Label Text="{Binding ActivityData.Pace}" Style="{StaticResource PrimaryNumberStyleBold}" HorizontalOptions="EndAndExpand"/>
+                    </StackLayout>
+                </Frame>
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
+                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
+                        <Label Text="{x:Static resources:Texts.Hiking_Elevation}" Style="{StaticResource PrimaryTextStyleBold}"/>
+                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
+                            <Label Text="{Binding AltitudeData.Elevation}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{x:Static resources:Texts.Activities_Meter}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
+                        </StackLayout>
+                    </StackLayout>
+                </Frame>
+
+                <StackLayout Margin="30, 0, 30, 0" Orientation="Horizontal">
+                    <ImageButton Source="start" HeightRequest="70" Command="{Binding StartActivityCom}" Opacity="{Binding InvertedOpacity}"/> 
+                    <ImageButton Source="stop" HeightRequest="70" HorizontalOptions="EndAndExpand" Command="{Binding StopActivityCom}" Opacity="{Binding Opacity}"/>
+                </StackLayout>
+
+                <StackLayout IsVisible="{Binding IsStopped}">
+                        <Button Text="{x:Static resources:Texts.Activities_Save}" Style="{StaticResource LargeTextButtonStyle}"/>
+                        <Button Text="{x:Static resources:Texts.Activities_Discard}" Style="{StaticResource LargeTextButtonStyle}"/>
+                </StackLayout>  
+
+                <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
+
+                <map:Map Style="{StaticResource MapStyle}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+
+        <Grid Grid.Row="2" Style="{StaticResource NavBarGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarSummary}" Command="{Binding ToSummaryViewCom}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarActivities}" Command="{Binding ToActivitiesViewCom}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarSelectedTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+
+</views:ViewBase>

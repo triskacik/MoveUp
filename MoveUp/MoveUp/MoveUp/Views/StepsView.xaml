@@ -124,7 +124,7 @@
             </StackLayout>
 
             <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
-                <ImageButton Style="{StaticResource NavBarActivities}"/>
+                <ImageButton Style="{StaticResource NavBarActivities}" Command="{Binding ToActivitiesViewCom}"/>
                 <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarTextStyle}"/>
             </StackLayout>
 

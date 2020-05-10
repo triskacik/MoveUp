@@ -184,5 +184,173 @@ namespace MoveUp.Resources {
                 return ResourceManager.GetString("CaloriesView.Header", resourceCulture);
             }
         }
+        
+        public static string Activities_Header {
+            get {
+                return ResourceManager.GetString("Activities.Header", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Hiking {
+            get {
+                return ResourceManager.GetString("Activities.Hiking", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Running {
+            get {
+                return ResourceManager.GetString("Activities.Running", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Cycling {
+            get {
+                return ResourceManager.GetString("Activities.Cycling", resourceCulture);
+            }
+        }
+        
+        public static string Activities_StartNew {
+            get {
+                return ResourceManager.GetString("Activities.StartNew", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Saved {
+            get {
+                return ResourceManager.GetString("Activities.Saved", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Date {
+            get {
+                return ResourceManager.GetString("Activities.Date", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Duration {
+            get {
+                return ResourceManager.GetString("Activities.Duration", resourceCulture);
+            }
+        }
+        
+        public static string Activities_View {
+            get {
+                return ResourceManager.GetString("Activities.View", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Scheduled {
+            get {
+                return ResourceManager.GetString("Activities.Scheduled", resourceCulture);
+            }
+        }
+        
+        public static string Activities_ScheduleOneTime {
+            get {
+                return ResourceManager.GetString("Activities.ScheduleOneTime", resourceCulture);
+            }
+        }
+        
+        public static string Activities_ScheduleRepeating {
+            get {
+                return ResourceManager.GetString("Activities.ScheduleRepeating", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Time {
+            get {
+                return ResourceManager.GetString("Activities.Time", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Delete {
+            get {
+                return ResourceManager.GetString("Activities.Delete", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Start {
+            get {
+                return ResourceManager.GetString("Activities.Start", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Stop {
+            get {
+                return ResourceManager.GetString("Activities.Stop", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Finish {
+            get {
+                return ResourceManager.GetString("Activities.Finish", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Save {
+            get {
+                return ResourceManager.GetString("Activities.Save", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Discard {
+            get {
+                return ResourceManager.GetString("Activities.Discard", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Kmh {
+            get {
+                return ResourceManager.GetString("Activities.Kmh", resourceCulture);
+            }
+        }
+        
+        public static string Activities_Meter {
+            get {
+                return ResourceManager.GetString("Activities.Meter", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_Header {
+            get {
+                return ResourceManager.GetString("Hiking.Header", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_Duration {
+            get {
+                return ResourceManager.GetString("Hiking.Duration", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_Distance {
+            get {
+                return ResourceManager.GetString("Hiking.Distance", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_AvgSpeed {
+            get {
+                return ResourceManager.GetString("Hiking.AvgSpeed", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_Elevation {
+            get {
+                return ResourceManager.GetString("Hiking.Elevation", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_Pace {
+            get {
+                return ResourceManager.GetString("Hiking.Pace", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_CurSpeed {
+            get {
+                return ResourceManager.GetString("Hiking.CurSpeed", resourceCulture);
+            }
+        }
     }
 }
