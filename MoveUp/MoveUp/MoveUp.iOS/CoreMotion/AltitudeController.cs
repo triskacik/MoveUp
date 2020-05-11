@@ -42,7 +42,7 @@ namespace MoveUp.iOS.CoreMotion
                 altData = data;
 
                 if (altData.RelativeAltitude != null)
-                    altitudeData.Elevation = Math.Round(altData.RelativeAltitude.DoubleValue, 1);
+                    altitudeData.UpdateElevation(Math.Round(altData.RelativeAltitude.DoubleValue, 1));
             }
         }
 

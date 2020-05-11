@@ -341,6 +341,12 @@ namespace MoveUp.Resources {
             }
         }
         
+        public static string Hiking_ElevationGain {
+            get {
+                return ResourceManager.GetString("Hiking.ElevationGain", resourceCulture);
+            }
+        }
+        
         public static string Hiking_Pace {
             get {
                 return ResourceManager.GetString("Hiking.Pace", resourceCulture);
@@ -350,6 +356,12 @@ namespace MoveUp.Resources {
         public static string Hiking_CurSpeed {
             get {
                 return ResourceManager.GetString("Hiking.CurSpeed", resourceCulture);
+            }
+        }
+        
+        public static string Hiking_From {
+            get {
+                return ResourceManager.GetString("Hiking.From", resourceCulture);
             }
         }
     }

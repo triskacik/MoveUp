@@ -1,12 +1,9 @@
 ﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp.iOS/CoreMotion/AltitudeController.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Views/ActivitiesView.xaml">
     <Files>
-      <File FileName="MoveUp/MoveUp/Views/HikingView.xaml" Line="65" Column="96" />
-      <File FileName="MoveUp/MoveUp/ViewModels/HikingViewModel.cs" Line="20" Column="51" />
-      <File FileName="MoveUp/MoveUp.iOS/CoreMotion/CoreMotionController.cs" Line="22" Column="1" />
-      <File FileName="MoveUp/MoveUp/Services/Interfaces/IAltitudeController.cs" Line="14" Column="1" />
-      <File FileName="MoveUp/MoveUp.iOS/CoreMotion/AltitudeController.cs" Line="51" Column="53" />
-      <File FileName="MoveUp/MoveUp/Models/AltitudeData.cs" Line="4" Column="42" />
+      <File FileName="MoveUp/MoveUp/Views/ActivitiesView.xaml" Line="76" Column="41" />
+      <File FileName="MoveUp/MoveUp/ViewModels/ActivitiesViewModel.cs" Line="38" Column="1" />
+      <File FileName="MoveUp/MoveUp/Models/HikingSavedData.cs" Line="14" Column="45" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,35 +11,27 @@
           <Node name="MoveUp" expanded="True">
             <Node name="MoveUp" expanded="True">
               <Node name="Models" expanded="True" />
-              <Node name="Resources" expanded="True" />
-              <Node name="Services" expanded="True">
-                <Node name="Interfaces" expanded="True" />
-              </Node>
-              <Node name="ViewModels" expanded="True">
-                <Node name="Base" expanded="True" />
-              </Node>
+              <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
-                <Node name="HikingView.xaml" expanded="True" />
-                <Node name="SummaryView.xaml" expanded="True" />
+                <Node name="ActivitiesView.xaml" expanded="True" selected="True" />
               </Node>
             </Node>
-            <Node name="MoveUp.iOS" expanded="True">
-              <Node name="CoreMotion" expanded="True">
-                <Node name="AltitudeController.cs" selected="True" />
-              </Node>
-              <Node name="Installers" expanded="True" />
-            </Node>
+            <Node name="MoveUp.Android" expanded="True" />
+            <Node name="MoveUp.iOS" expanded="True" />
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EE2D6548-F041-4A8D-9D45-CFAD51A81CE1" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008020-000515861A86002E" />
   <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
 </Properties>

@@ -262,21 +262,27 @@
     <value>Hiking</value>
   </data>
   <data name="Hiking.Duration" xml:space="preserve">
-    <value>Duration:</value>
+    <value>Duration</value>
   </data>
   <data name="Hiking.Distance" xml:space="preserve">
-    <value>Distance:</value>
+    <value>Distance</value>
   </data>
   <data name="Hiking.AvgSpeed" xml:space="preserve">
-    <value>Average Speed:</value>
+    <value>Average Speed</value>
   </data>
   <data name="Hiking.Elevation" xml:space="preserve">
-    <value>Elevation:</value>
+    <value>Relative Elevation</value>
+  </data>
+  <data name="Hiking.ElevationGain" xml:space="preserve">
+    <value>Total Elevated</value>
   </data>
   <data name="Hiking.Pace" xml:space="preserve">
-    <value>Steps per Second:</value>
+    <value>Steps per Second</value>
   </data>
   <data name="Hiking.CurSpeed" xml:space="preserve">
-    <value>Current Speed:</value>
+    <value>Current Speed</value>
+  </data>
+  <data name="Hiking.From" xml:space="preserve">
+    <value>Hiking Data From</value>
   </data>
 </root>

@@ -1,4 +1,5 @@
 ﻿using MoveUp.Services.Interfaces;
+using MoveUp.ViewModels;
 using System;
 using System.Threading.Tasks;
 using Xamarin.Forms;
@@ -35,7 +36,7 @@ namespace MoveUp.Services
             }
             catch (Exception)
             {
-                // ignored
+                //Ignored
             }
         }
     }

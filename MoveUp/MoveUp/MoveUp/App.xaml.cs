@@ -44,15 +44,16 @@ namespace MoveUp
 
         protected override void OnStart()
         {
-
         }
 
         protected override void OnSleep()
         {
+            MyDependencyService.Resolve<ITimerService>().StopTimer();
         }
 
         protected override void OnResume()
         {
+            MyDependencyService.Resolve<ITimerService>().ResumeTimer();
         }
     }
 }

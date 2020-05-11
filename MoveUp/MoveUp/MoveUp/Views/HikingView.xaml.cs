@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 using MoveUp.ViewModels;
 using Xamarin.Forms;
 
@@ -13,6 +14,7 @@ namespace MoveUp.Views
         {
             vm = viewModel;
             BindingContext = viewModel;
+            vm.HikingPage = this;
             InitializeComponent();
         }
 
@@ -20,6 +22,11 @@ namespace MoveUp.Views
         {
             base.OnDisappearing();
             vm.StopActivity();
+        }
+
+        public async Task<bool> DisplayPopup()
+        {
+            return await DisplayAlert("Finish", "Do you really want to finish the activity?", "Yes", "No");
         }
     }
 }

@@ -1,4 +1,5 @@
-﻿<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
                 xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
                 xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
                 xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
@@ -7,13 +8,13 @@
                 xmlns:map="clr-namespace:Xamarin.Forms.Maps;assembly=Xamarin.Forms.Maps"
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
                 mc:Ignorable="d"
-                d:DataContext="{d:DesignInstance viewModels:HikingViewModel}"
-                x:Class="MoveUp.Views.HikingView"
+                d:DataContext="{d:DesignInstance viewModels:HikingSavedViewModel}"
+                x:Class="MoveUp.Views.HikingSavedView"
                 BackgroundColor="{StaticResource PageBcgColor}">
 
     <NavigationPage.TitleView>
         <StackLayout Orientation="Horizontal">
-            <Label Text="{x:Static resources:Texts.Hiking_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}" TextColor="{Binding HeaderColor}" VerticalOptions="CenterAndExpand"/>
+            <Label Text="{x:Static resources:Texts.Hiking_Header}" Style="{StaticResource TopBarHeaderStyleWithBack}" VerticalOptions="CenterAndExpand"/>
             <Image Style="{StaticResource HikingIconSmall}" VerticalOptions="CenterAndExpand"/>
         </StackLayout>
     </NavigationPage.TitleView>
@@ -28,10 +29,15 @@
         <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
             <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
 
+                <StackLayout>
+                    <Label Text="{x:Static resources:Texts.Hiking_From}" Style="{StaticResource HeaderStyle}"/>
+                    <Label Text="{Binding Data.StartDate}" Style="{StaticResource HeaderStyle}"/>
+                </StackLayout>
+
                 <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
                     <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                         <Label Text="{x:Static resources:Texts.Hiking_Duration}" Style="{StaticResource PrimaryTextStyleBold}"/>
-                        <Label Text="{Binding TimerData.DurationString}" Style="{StaticResource PrimaryNumberStyleBold}" HorizontalOptions="EndAndExpand"/>
+                        <Label Text="{Binding Data.DurationString}" Style="{StaticResource PrimaryNumberStyleBold}" HorizontalOptions="EndAndExpand"/>
                     </StackLayout>
                 </Frame>
 
@@ -39,7 +45,7 @@
                     <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                         <Label Text="{x:Static resources:Texts.Hiking_Distance}" Style="{StaticResource PrimaryTextStyleBold}"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Label Text="{Binding ActivityData.Distance}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{Binding Data.Distance}" Style="{StaticResource PrimaryNumberStyleBold}"/>
                             <Label Text="{x:Static resources:Texts.SumView_Km}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                         </StackLayout>
                     </StackLayout>
@@ -49,7 +55,7 @@
                     <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                         <Label Text="{x:Static resources:Texts.Hiking_AvgSpeed}" Style="{StaticResource PrimaryTextStyleBold}"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Label Text="{Binding ActivityData.AvgSpeed}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{Binding Data.AvgSpeed}" Style="{StaticResource PrimaryNumberStyleBold}"/>
                             <Label Text="{x:Static resources:Texts.Activities_Kmh}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                         </StackLayout>
                     </StackLayout>
@@ -57,35 +63,13 @@
 
                 <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
                     <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                        <Label Text="{x:Static resources:Texts.Hiking_Pace}" Style="{StaticResource PrimaryTextStyleBold}"/>
-                        <Label Text="{Binding ActivityData.Pace}" Style="{StaticResource PrimaryNumberStyleBold}" HorizontalOptions="EndAndExpand"/>
-                    </StackLayout>
-                </Frame>
-
-                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
-                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
                         <Label Text="{x:Static resources:Texts.Hiking_ElevationGain}" Style="{StaticResource PrimaryTextStyleBold}"/>
                         <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Label Text="{Binding AltitudeData.ElevationGain}" Style="{StaticResource PrimaryNumberStyleBold}"/>
+                            <Label Text="{Binding Data.ElevationGain}" Style="{StaticResource PrimaryNumberStyleBold}"/>
                             <Label Text="{x:Static resources:Texts.Activities_Meter}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
                         </StackLayout>
                     </StackLayout>
                 </Frame>
-
-                <Frame Style="{StaticResource PrimaryBannerStyle}" Opacity="{Binding Opacity}">
-                    <StackLayout Orientation="Horizontal" Spacing="{StaticResource BannerStackPrimarySpacing}">
-                        <Label Text="{x:Static resources:Texts.Hiking_Elevation}" Style="{StaticResource PrimaryTextStyleBold}"/>
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="EndAndExpand">
-                            <Label Text="{Binding AltitudeData.Elevation}" Style="{StaticResource PrimaryNumberStyleBold}"/>
-                            <Label Text="{x:Static resources:Texts.Activities_Meter}" Style="{StaticResource SecondaryTextStyle}" VerticalOptions="End"/>
-                        </StackLayout>
-                    </StackLayout>
-                </Frame>
-
-                <StackLayout Margin="30, 0, 30, 0" Orientation="Horizontal">
-                    <ImageButton Source="start" HeightRequest="70" Command="{Binding StartActivityCom}" Opacity="{Binding InvertedOpacity}"/> 
-                    <ImageButton Source="stop" HeightRequest="70" HorizontalOptions="EndAndExpand" Command="{Binding PopUpCom}" Opacity="{Binding Opacity}"/>
-                </StackLayout>
 
                 <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
 
@@ -118,6 +102,7 @@
                 <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
             </StackLayout>
         </Grid>
+
     </Grid>
 
 </views:ViewBase>

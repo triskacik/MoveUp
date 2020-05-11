@@ -7,5 +7,8 @@ namespace MoveUp.Services.Interfaces
     {
         TableQuery<CoreMotionData> GetCoreMotionTable();
         void InsertCoreMotionData(CoreMotionData data);
+
+        TableQuery<HikingSavedData> GetHikingDataTable();
+        void InsertHikingData(HikingSavedData data);
     }
 }

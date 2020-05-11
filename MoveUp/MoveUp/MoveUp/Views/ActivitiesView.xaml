@@ -6,6 +6,7 @@
                 xmlns:views="clr-namespace:MoveUp.Views"
                 xmlns:resources="clr-namespace:MoveUp.Resources"
                 xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                xmlns:models="clr-namespace:MoveUp.Models"
                 mc:Ignorable="d"
                 d:DataContext="{d:DesignInstance viewModels:ActivitiesViewModel}"
                 x:Class="MoveUp.Views.ActivitiesView"
@@ -63,6 +64,16 @@
                 </StackLayout>
 
                 <Label Text="{x:Static resources:Texts.Activities_Saved}" Style="{StaticResource HeaderStyle}"/>
+
+                <Label Text="--------"/>
+                <CollectionView ItemsSource="{Binding HikingDataCollection}">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate>
+                            <TextCell Text="{Binding StartDate}" Height="50"/>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+                <Label Text="--------"/>
 
                 <Label Text="{x:Static resources:Texts.Activities_Scheduled}" Style="{StaticResource HeaderStyle}"/>
 

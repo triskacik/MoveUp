@@ -16,6 +16,7 @@ namespace MoveUp.Services.Interfaces
 
             connection = new SQLiteConnection(path);
             connection.CreateTable<CoreMotionData>();
+            connection.CreateTable<HikingSavedData>();
         }
 
         public TableQuery<CoreMotionData> GetCoreMotionTable()
@@ -24,6 +25,16 @@ namespace MoveUp.Services.Interfaces
         }
 
         public void InsertCoreMotionData(CoreMotionData data)
+        {
+            connection.Insert(data);
+        }
+
+        public TableQuery<HikingSavedData> GetHikingDataTable()
+        {
+            return connection.Table<HikingSavedData>();
+        }
+
+        public void InsertHikingData(HikingSavedData data)
         {
             connection.Insert(data);
         }
