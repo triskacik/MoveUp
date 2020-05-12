@@ -11,6 +11,8 @@ namespace MoveUp.Services
         private DateTime timeStopped;
         private TimerData timerData = new TimerData();
 
+        private bool isRunning = false;
+
         public TimerService()
         {
             timer.Elapsed += TimerElapsed;
@@ -22,6 +24,7 @@ namespace MoveUp.Services
             timer.Elapsed += TimerElapsed;
             timerData.Duration = new TimeSpan(0);
             timeStopped = new DateTime();
+            isRunning = false;
         }
 
         public void StopTimer()
@@ -33,17 +36,17 @@ namespace MoveUp.Services
         public void StartTimer()
         {
             timer.Start();
+            isRunning = true;
         }
 
         public void ResumeTimer()
         {
-            if (timeStopped != null)
+            if (timeStopped != null && isRunning)
             {
                 TimeSpan sleepingTime = DateTime.Now - timeStopped;
                 timerData.Duration += sleepingTime;
+                timer.Start();
             }
-            
-            timer.Start();
         }
 
         public TimerData GetTimerData()

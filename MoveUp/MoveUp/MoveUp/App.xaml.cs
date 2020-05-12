@@ -6,6 +6,7 @@ using Microsoft.Extensions.DependencyInjection;
 using MoveUp.Installers;
 using MoveUp.Views;
 using System.Collections.Generic;
+using MoveUp.Factories.Interfaces;
 
 namespace MoveUp
 {

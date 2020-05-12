@@ -232,6 +232,12 @@
   <data name="Activities.Time" xml:space="preserve">
     <value>Time</value>
   </data>
+  <data name="Activities.View" xml:space="preserve">
+    <value>View</value>
+  </data>
+  <data name="Activities.Delete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
     
   <data name="Activities.Delete" xml:space="preserve">
     <value>Delete</value>

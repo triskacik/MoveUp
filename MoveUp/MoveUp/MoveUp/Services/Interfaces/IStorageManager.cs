@@ -10,5 +10,6 @@ namespace MoveUp.Services.Interfaces
 
         TableQuery<HikingSavedData> GetHikingDataTable();
         void InsertHikingData(HikingSavedData data);
+        void DeleteHikingData(HikingSavedData data);
     }
 }

@@ -21,7 +21,7 @@ namespace MoveUp.Models
         public HikingSavedData()
         {
             StartDate = DateTime.Now;
-            DurationString = "";
+            DurationString = "Duration";
             Distance = 0;
             AvgSpeed = 0;
             ElevationGain = 0;

@@ -11,7 +11,8 @@
                 d:DataContext="{d:DesignInstance viewModels:ActivitiesViewModel}"
                 x:Class="MoveUp.Views.ActivitiesView"
                 BackgroundColor="{StaticResource PageBcgColor}"
-                NavigationPage.HasBackButton="False">
+                NavigationPage.HasBackButton="False"
+                x:Name="root">
 
     <NavigationPage.TitleView>
         <Label Text="{x:Static resources:Texts.Activities_Header}" Style="{StaticResource TopBarHeaderStyle}"/>
@@ -65,15 +66,30 @@
 
                 <Label Text="{x:Static resources:Texts.Activities_Saved}" Style="{StaticResource HeaderStyle}"/>
 
-                <Label Text="--------"/>
-                <CollectionView ItemsSource="{Binding HikingDataCollection}">
-                    <CollectionView.ItemTemplate>
+                <Label Text="{x:Static resources:Texts.Hiking_Header}" Style="{StaticResource SmallHeaderStyle}"/>
+                <ListView ItemsSource="{Binding HikingDataCollection}" HeightRequest="{StaticResource ListViewHeight}">
+                    <ListView.ItemTemplate>
                         <DataTemplate>
-                            <TextCell Text="{Binding StartDate}" Height="50"/>
+                            <ViewCell>
+                                <Grid Style="{StaticResource ListViewGridStyle}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="*"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="Auto"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding ShortDate}" Style="{StaticResource SmallTextBlack}" VerticalOptions="CenterAndExpand"/>
+                                    <Label Grid.Column="1" Text="{Binding DurationString}" Style="{StaticResource SmallTextGrey}" VerticalOptions="CenterAndExpand"/>
+                                    <Button Grid.Column="2" Text="{x:Static resources:Texts.Activities_View}" Style="{StaticResource TextButtonStyle}" VerticalOptions="CenterAndExpand"
+                                            Command="{Binding Source={x:Reference root}, Path=BindingContext.ViewHikingDataCom}" CommandParameter="{Binding}"/>
+                                    <Button Grid.Column="3" Text="{x:Static resources:Texts.Activities_Delete}" Style="{StaticResource TextButtonStyleRed}" VerticalOptions="CenterAndExpand"
+                                            Command="{Binding Source={x:Reference root}, Path=BindingContext.DeleteHikingDataCom}" CommandParameter="{Binding}"/>
+                                </Grid>
+                            </ViewCell>
                         </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
-                <Label Text="--------"/>
+                    </ListView.ItemTemplate>
+                </ListView>
 
                 <Label Text="{x:Static resources:Texts.Activities_Scheduled}" Style="{StaticResource HeaderStyle}"/>
 

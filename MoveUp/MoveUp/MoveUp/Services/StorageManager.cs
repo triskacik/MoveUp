@@ -38,5 +38,10 @@ namespace MoveUp.Services.Interfaces
         {
             connection.Insert(data);
         }
+
+        public void DeleteHikingData(HikingSavedData data)
+        {
+            connection.Delete(data);
+        }
     }
 }

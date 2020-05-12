@@ -82,10 +82,10 @@
                     </StackLayout>
                 </Frame>
 
-                <StackLayout Margin="30, 0, 30, 0" Orientation="Horizontal">
-                    <ImageButton Source="start" HeightRequest="70" Command="{Binding StartActivityCom}" Opacity="{Binding InvertedOpacity}"/> 
-                    <ImageButton Source="stop" HeightRequest="70" HorizontalOptions="EndAndExpand" Command="{Binding PopUpCom}" Opacity="{Binding Opacity}"/>
-                </StackLayout>
+                <Grid HorizontalOptions="CenterAndExpand">
+                    <ImageButton Source="start" HeightRequest="70" IsVisible="{Binding IsStopped}" Command="{Binding StartActivityCom}"/> 
+                    <ImageButton Source="stop" HeightRequest="70" IsVisible="{Binding IsRunning}" Command="{Binding PopUpCom}"/>
+                </Grid>
 
                 <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
 

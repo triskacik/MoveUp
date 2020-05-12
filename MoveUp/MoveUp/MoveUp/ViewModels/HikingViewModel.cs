@@ -20,6 +20,9 @@ namespace MoveUp.ViewModels
         public ICommand StopActivityCom { get; set; }
         public ICommand PopUpCom { get; set; }
 
+        public bool IsRunning { get; set; } = false;
+        public bool IsStopped { get; set; } = true;
+
         public Color HeaderColor { get; set; } = Color.Red;
         public double Opacity { get; set; } = 0.2;
         public double InvertedOpacity { get; set; } = 1;
@@ -67,6 +70,9 @@ namespace MoveUp.ViewModels
             HeaderColor = Color.Green;
             Opacity = 1;
             InvertedOpacity = 0.2;
+
+            IsRunning = true;
+            IsStopped = false;
         }
 
         public void StopActivity()
@@ -82,6 +88,9 @@ namespace MoveUp.ViewModels
             HeaderColor = Color.Red;
             Opacity = 0.2;
             InvertedOpacity = 1;
+
+            IsRunning = false;
+            IsStopped = true;
         }
 
         public async void FinishActivity()
