@@ -1,24 +1,34 @@
 ﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
   <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Services/StorageManager.cs">
     <Files>
-      <File FileName="MoveUp/MoveUp/Services/StorageManager.cs" Line="64" Column="63" />
+      <File FileName="MoveUp/MoveUp.iOS/CoreMotion/ActivityLocationController.cs" Line="7" Column="1" />
+      <File FileName="MoveUp/MoveUp.iOS/CoreMotion/Extensions/ActivityLocationDelegate.cs" Line="28" Column="6" />
+      <File FileName="MoveUp/MoveUp/ViewModels/HikingViewModel.cs" Line="101" Column="37" />
+      <File FileName="MoveUp/MoveUp/Models/HikingSavedData.cs" Line="27" Column="17" />
+      <File FileName="MoveUp/MoveUp/ViewModels/HikingSavedViewModel.cs" Line="15" Column="81" />
+      <File FileName="MoveUp/MoveUp/ViewModels/ActivitiesViewModel.cs" Line="1" Column="1" />
+      <File FileName="MoveUp/MoveUp/Services/StorageManager.cs" Line="30" Column="10" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="MoveUp" expanded="True">
             <Node name="MoveUp" expanded="True">
+              <Node name="Models" expanded="True" />
               <Node name="Services" expanded="True">
+                <Node name="Interfaces" expanded="True" />
                 <Node name="StorageManager.cs" selected="True" />
               </Node>
               <Node name="ViewModels" expanded="True" />
               <Node name="Views" expanded="True">
+                <Node name="HikingView.xaml" expanded="True" />
                 <Node name="SummaryView.xaml" expanded="True" />
               </Node>
-              <Node name="App.xaml" expanded="True" />
             </Node>
             <Node name="MoveUp.iOS" expanded="True">
-              <Node name="CoreMotion" expanded="True" />
+              <Node name="CoreMotion" expanded="True">
+                <Node name="Extensions" expanded="True" />
+              </Node>
             </Node>
           </Node>
         </State>
@@ -26,11 +36,11 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|iPhoneSimulator" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008020-000515861A86002E" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EE2D6548-F041-4A8D-9D45-CFAD51A81CE1" />
   <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
 </Properties>

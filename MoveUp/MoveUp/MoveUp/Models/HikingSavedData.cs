@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using SQLite;
+using Xamarin.Forms.Maps;
+using Newtonsoft.Json;
 
 namespace MoveUp.Models
 {
@@ -18,6 +22,21 @@ namespace MoveUp.Models
             get => StartDate.ToShortDateString();
         }
 
+        public string positionsSerialized { get; set; } = "";
+
+        [Ignore]
+        public SavedPosition[] Positions
+        {
+            get
+            {
+                return JsonConvert.DeserializeObject<SavedPosition[]>(positionsSerialized);
+            }
+            set
+            {
+                positionsSerialized = JsonConvert.SerializeObject(value);
+            }
+        }
+
         public HikingSavedData()
         {
             StartDate = DateTime.Now;
@@ -27,13 +46,14 @@ namespace MoveUp.Models
             ElevationGain = 0;
         }
 
-        public HikingSavedData(CoreActivityData activityData, AltitudeData altitudeData, string duration)
+        public HikingSavedData(CoreActivityData activityData, AltitudeData altitudeData, string duration, List<Position> positions)
         {
             StartDate = activityData.StartDate;
             DurationString = duration;
             Distance = activityData.Distance;
             AvgSpeed = activityData.AvgSpeed;
             ElevationGain = altitudeData.ElevationGain;
+            Positions = positions.Select(position => new SavedPosition(position)).ToArray();
         }
     }
 }

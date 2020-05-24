@@ -73,7 +73,7 @@
 
                 <Label Text="{x:Static resources:Texts.SumView_Map}" Style="{StaticResource HeaderStyle}"/>
 
-                <map:Map Style="{StaticResource MapStyle}"/>
+                <ContentView Content="{Binding Map}" HeightRequest="500"/>
 
             </StackLayout>
         </ScrollView>

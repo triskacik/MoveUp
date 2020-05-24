@@ -48,6 +48,9 @@ namespace MoveUp.ViewModels
         {
             StepsTarget = preferencesStorage.GetStepsTarget();
             DistanceTarget = preferencesStorage.GetDistanceTarget();
+
+            if (RealtimePolyline.Polyline.Geopath.Count > 0)
+                Map.MoveToRegion(new MapSpan(RealtimePolyline.Polyline.Geopath[RealtimePolyline.Polyline.Geopath.Count - 1], 0.01, 0.01));
         }
 
         public void SavePolyline()

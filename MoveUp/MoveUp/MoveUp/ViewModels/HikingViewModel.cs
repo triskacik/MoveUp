@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Timers;
 using System.Windows.Input;
 using MoveUp.Factories.Interfaces;
@@ -6,6 +7,7 @@ using MoveUp.Models;
 using MoveUp.Services.Interfaces;
 using MoveUp.ViewModels.Base;
 using Xamarin.Forms;
+using Xamarin.Forms.Maps;
 
 namespace MoveUp.ViewModels
 {
@@ -15,6 +17,9 @@ namespace MoveUp.ViewModels
 
         public CoreActivityData ActivityData { get; set; } = new CoreActivityData();
         public AltitudeData AltitudeData { get; set; } = new AltitudeData();
+
+        public Map Map { get; set; }
+        public LocationPolyline Polyline { get; set; } = new LocationPolyline();
 
         public ICommand StartActivityCom { get; set; }
         public ICommand StopActivityCom { get; set; }
@@ -35,6 +40,7 @@ namespace MoveUp.ViewModels
         private IStorageManager storage;
         private INavigationService navigation;
         private IHistoryDataFeeder dataFeeder;
+        private IActivityLocationController activityLocationController;
 
         public HikingViewModel(ICommandFactory commandFactory,
                                INavigationService navigationService,
@@ -42,7 +48,8 @@ namespace MoveUp.ViewModels
                                IAltitudeController altitudeContr,
                                ITimerService timerService,
                                IStorageManager storageManager,
-                               IHistoryDataFeeder feeder) : base(navigationService, commandFactory)
+                               IHistoryDataFeeder feeder,
+                               IActivityLocationController activityLocation) : base(navigationService, commandFactory)
         {
             motionController = coreMotionController;
             altitudeController = altitudeContr;
@@ -50,12 +57,15 @@ namespace MoveUp.ViewModels
             storage = storageManager;
             navigation = navigationService;
             dataFeeder = feeder;
+            activityLocationController = activityLocation;
 
             TimerData = timer.GetTimerData();
 
             StartActivityCom = commandFactory.CreateCommand(StartActivity);
             StopActivityCom = commandFactory.CreateCommand(StopActivity);
             PopUpCom = commandFactory.CreateCommand(FinishActivity);
+
+            InitializeMap();
         }
 
         private void StartActivity()
@@ -66,6 +76,9 @@ namespace MoveUp.ViewModels
 
             altitudeController.TriggerActivity();
             AltitudeData = altitudeController.GetData();
+
+            activityLocationController.StartUpdates();
+            InitializeMap();
 
             HeaderColor = Color.Green;
             Opacity = 1;
@@ -99,7 +112,7 @@ namespace MoveUp.ViewModels
 
             if (finish)
             {
-                HikingSavedData hikingData = new HikingSavedData(ActivityData, AltitudeData, TimerData.DurationString);
+                HikingSavedData hikingData = new HikingSavedData(ActivityData, AltitudeData, TimerData.DurationString, new List<Position>(Polyline.Polyline.Geopath));
                 StopActivity();
                 storage.InsertHikingData(hikingData);
 
@@ -107,6 +120,18 @@ namespace MoveUp.ViewModels
 
                 await navigation.PushAsync<HikingSavedViewModel>();
             }
+        }
+
+        private void InitializeMap()
+        {
+            Map = new Map();
+            Map.MapType = MapType.Hybrid;
+            Map.IsShowingUser = true;
+            Map.HasZoomEnabled = true;
+
+            Polyline = activityLocationController.GetPolyline();
+            Map.MapElements.Add(Polyline.Polyline);
+            activityLocationController.SetDelegateMap(Map);
         }
     }
 }

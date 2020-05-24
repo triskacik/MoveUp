@@ -33,6 +33,10 @@ namespace MoveUp.Services.Interfaces
 
         public TableQuery<HikingSavedData> GetHikingDataTable()
         {
+            foreach (var data in connection.Table<HikingSavedData>())
+            {
+                Console.WriteLine("DATA: " + data.ShortDate + " Positions: " + data.Positions.Length);
+            }
             return connection.Table<HikingSavedData>();
         }
 
