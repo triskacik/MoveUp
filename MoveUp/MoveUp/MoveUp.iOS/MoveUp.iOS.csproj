@@ -76,6 +76,8 @@
     <Compile Include="CoreMotion\Extensions\DateConverter.cs" />
     <Compile Include="Installers\iOSInstaller.cs" />
     <Compile Include="CoreMotion\AltitudeController.cs" />
+    <Compile Include="CoreMotion\LocationController.cs" />
+    <Compile Include="CoreMotion\Extensions\LocationDelegate.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Flame.imageset\Contents.json">

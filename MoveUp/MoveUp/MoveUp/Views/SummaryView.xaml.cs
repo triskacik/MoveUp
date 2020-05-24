@@ -18,5 +18,11 @@ namespace MoveUp.Views
             base.OnAppearing();
             vm.Refresh();
         }
+
+        protected override void OnDisappearing()
+        {
+            base.OnDisappearing();
+            vm.SavePolyline();
+        }
     }
 }

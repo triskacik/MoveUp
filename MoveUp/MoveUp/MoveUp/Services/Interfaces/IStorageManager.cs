@@ -1,4 +1,5 @@
-﻿using MoveUp.Models;
+﻿using System.Collections.Generic;
+using MoveUp.Models;
 using SQLite;
 
 namespace MoveUp.Services.Interfaces
@@ -11,5 +12,8 @@ namespace MoveUp.Services.Interfaces
         TableQuery<HikingSavedData> GetHikingDataTable();
         void InsertHikingData(HikingSavedData data);
         void DeleteHikingData(HikingSavedData data);
+
+        void InsertTodaysPositions(List<SavedPosition> data);
+        List<SavedPosition> GetTodaysPositions();
     }
 }

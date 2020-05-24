@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using MoveUp.Models;
 using SQLite;
@@ -17,6 +18,7 @@ namespace MoveUp.Services.Interfaces
             connection = new SQLiteConnection(path);
             connection.CreateTable<CoreMotionData>();
             connection.CreateTable<HikingSavedData>();
+            connection.CreateTable<SavedPosition>();
         }
 
         public TableQuery<CoreMotionData> GetCoreMotionTable()
@@ -42,6 +44,24 @@ namespace MoveUp.Services.Interfaces
         public void DeleteHikingData(HikingSavedData data)
         {
             connection.Delete(data);
+        }
+
+        public void InsertTodaysPositions(List<SavedPosition> data)
+        {
+            var query = connection.Table<SavedPosition>();
+            connection.DeleteAll(query.Table);
+            connection.InsertAll(data);
+        }
+
+        public List<SavedPosition> GetTodaysPositions()
+        {
+            var query = connection.Table<SavedPosition>();
+            if (query.Count() > 0)
+            {
+                if(query.First().Date.Date != DateTime.Now.Date)
+                    connection.Delete(query);
+            }
+            return connection.Table<SavedPosition>().ToList();
         }
     }
 }
