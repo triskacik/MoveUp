@@ -291,4 +291,23 @@
   <data name="Hiking.From" xml:space="preserve">
     <value>Hiking Data From</value>
   </data>
+    
+  <data name="Scheduler.Header" xml:space="preserve">
+    <value>Schedule Activity</value>
+  </data>
+  <data name="Scheduler.Pick" xml:space="preserve">
+    <value>Pick the activity</value>
+  </data>
+  <data name="Scheduler.ChooseDate" xml:space="preserve">
+    <value>Choose the date</value>
+  </data>
+  <data name="Scheduler.ChooseTime" xml:space="preserve">
+    <value>Choose the time</value>
+  </data>
+  <data name="Scheduler.Notification" xml:space="preserve">
+    <value>Notification</value>
+  </data>
+  <data name="Scheduler.Schedule" xml:space="preserve">
+    <value>Schedule</value>
+  </data>
 </root>

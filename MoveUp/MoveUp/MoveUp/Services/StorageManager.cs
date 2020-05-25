@@ -19,6 +19,7 @@ namespace MoveUp.Services.Interfaces
             connection.CreateTable<CoreMotionData>();
             connection.CreateTable<HikingSavedData>();
             connection.CreateTable<SavedPosition>();
+            connection.CreateTable<NotificationData>();
         }
 
         public TableQuery<CoreMotionData> GetCoreMotionTable()
@@ -33,10 +34,6 @@ namespace MoveUp.Services.Interfaces
 
         public TableQuery<HikingSavedData> GetHikingDataTable()
         {
-            foreach (var data in connection.Table<HikingSavedData>())
-            {
-                Console.WriteLine("DATA: " + data.ShortDate + " Positions: " + data.Positions.Length);
-            }
             return connection.Table<HikingSavedData>();
         }
 
@@ -63,9 +60,29 @@ namespace MoveUp.Services.Interfaces
             if (query.Count() > 0)
             {
                 if(query.First().Date.Date != DateTime.Now.Date)
-                    connection.Delete(query);
+                    connection.DeleteAll(query.Table);
             }
-            return connection.Table<SavedPosition>().ToList();
+            return query.ToList();
+        }
+
+        public void InsertNotification(NotificationData data)
+        {
+            connection.Insert(data);
+        }
+
+        public List<NotificationData> GetNotifications()
+        {
+            var query = connection.Table<NotificationData>();
+
+            foreach (var data in query)
+            {
+                if (data.Date < DateTime.Now)
+                {
+                    connection.Delete(data);
+                }
+            }
+
+            return query.ToList();
         }
     }
 }

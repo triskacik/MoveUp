@@ -93,10 +93,26 @@
 
                 <Label Text="{x:Static resources:Texts.Activities_Scheduled}" Style="{StaticResource HeaderStyle}"/>
 
-                <StackLayout>
-                    <Button Text="{x:Static resources:Texts.Activities_ScheduleOneTime}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="Start" HeightRequest="25"/>
-                    <Button Text="{x:Static resources:Texts.Activities_ScheduleRepeating}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="Start" HeightRequest="25"/>
-                </StackLayout>
+                <Button Text="{x:Static resources:Texts.Activities_ScheduleOneTime}" Style="{StaticResource TextButtonStyle}" HorizontalOptions="Start" HeightRequest="25"
+                        Command="{Binding ToSchedulerViewCom}"/>
+
+                <ListView ItemsSource="{Binding ScheduledCollection}" HeightRequest="{StaticResource ListViewHeight}">
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <ViewCell>
+                                <Grid Style="{StaticResource ListViewGridStyle}">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width="*"/>
+                                    </Grid.ColumnDefinitions>
+
+                                    <Label Grid.Column="0" Text="{Binding Type}" Style="{StaticResource SmallTextBlack}" VerticalOptions="CenterAndExpand" HorizontalOptions="StartAndExpand"/>
+                                    <Label Grid.Column="1" Text="{Binding Date}" Style="{StaticResource SmallTextGrey}" VerticalOptions="CenterAndExpand" HorizontalOptions="EndAndExpand"/>
+                                </Grid>
+                            </ViewCell>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
 
             </StackLayout>
         </ScrollView>

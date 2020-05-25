@@ -1,0 +1,93 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<views:ViewBase xmlns="http://xamarin.com/schemas/2014/forms"
+                xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+                xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+                xmlns:views="clr-namespace:MoveUp.Views"
+                xmlns:resources="clr-namespace:MoveUp.Resources"
+                xmlns:viewModels="clr-namespace:MoveUp.ViewModels"
+                mc:Ignorable="d"
+                d:DataContext="{d:DesignInstance viewModels:SchedulerViewModel}"
+                x:Class="MoveUp.Views.SchedulerView"
+                BackgroundColor="{StaticResource PageBcgColor}"
+                NavigationPage.HasBackButton="True">
+
+    <NavigationPage.TitleView>
+        <Label Text="{x:Static resources:Texts.Scheduler_Header}" Style="{StaticResource TopBarHeaderStyle}" HorizontalOptions="EndAndExpand"/>
+    </NavigationPage.TitleView>
+
+    <Grid RowSpacing="0">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <ScrollView Grid.Row="0" Padding="{StaticResource ScrollViewAdditionalPadding}">
+            <StackLayout Style="{StaticResource PrimaryStackLayoutStyle}">
+
+                <Frame Style="{StaticResource PrimaryBannerStyle}" Padding="15, 20, 15, 20">
+                    <StackLayout Spacing="20">
+                        <Frame Style="{StaticResource SchedulerInlineFrameStyle}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{x:Static resources:Texts.Scheduler_Pick}" Style="{StaticResource HighlightedTextStyle}" VerticalOptions="CenterAndExpand"/>
+                                <Picker HorizontalOptions="EndAndExpand" FontFamily="{StaticResource RegularFont}"
+                                        ItemsSource="{Binding Activities}" SelectedIndex="{Binding SelectedActivity}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Style="{StaticResource SchedulerInlineFrameStyle}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{x:Static resources:Texts.Scheduler_ChooseDate}" Style="{StaticResource HighlightedTextStyle}" VerticalOptions="CenterAndExpand"/>
+                                <DatePicker HorizontalOptions="EndAndExpand" FontFamily="{StaticResource RegularFont}" Date="{Binding Date}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Style="{StaticResource SchedulerInlineFrameStyle}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{x:Static resources:Texts.Scheduler_ChooseTime}" Style="{StaticResource HighlightedTextStyle}" VerticalOptions="CenterAndExpand"/>
+                                <TimePicker HorizontalOptions="EndAndExpand" FontFamily="{StaticResource RegularFont}" Time="{Binding Time}"/>
+                            </StackLayout>
+                        </Frame>
+
+                        <Frame Style="{StaticResource SchedulerInlineFrameStyle}">
+                            <StackLayout Orientation="Horizontal">
+                                <Label Text="{x:Static resources:Texts.Scheduler_Notification}" Style="{StaticResource HighlightedTextStyle}" VerticalOptions="CenterAndExpand"/>
+                                <Switch HorizontalOptions="EndAndExpand" IsToggled="{Binding Notification}"/>
+                            </StackLayout>
+                        </Frame>
+                    </StackLayout>
+                </Frame>
+
+                <Button Text="{x:Static resources:Texts.Scheduler_Schedule}" Style="{StaticResource TextButtonStyle}" FontSize="Large" HorizontalOptions="CenterAndExpand"
+                        Command="{Binding CreateNotificationCom}"/>
+
+            </StackLayout>
+        </ScrollView>
+
+        <Label Grid.Row="1" Style="{StaticResource ThinHorizontalLineStyle}"/>
+
+        <Grid Grid.Row="2" Style="{StaticResource NavBarGridStyle}">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <StackLayout Grid.Column="0" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarSummary}" Command="{Binding ToSummaryViewCom}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Summary}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="1" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarActivities}" Command="{Binding ToActivitiesViewCom}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Activities}" Style="{StaticResource NavBarSelectedTextStyle}"/>
+            </StackLayout>
+
+            <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
+                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
+            </StackLayout>
+        </Grid>
+    </Grid>
+</views:ViewBase>

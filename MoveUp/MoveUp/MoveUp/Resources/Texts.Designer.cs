@@ -364,5 +364,41 @@ namespace MoveUp.Resources {
                 return ResourceManager.GetString("Hiking.From", resourceCulture);
             }
         }
+        
+        public static string Scheduler_Header {
+            get {
+                return ResourceManager.GetString("Scheduler.Header", resourceCulture);
+            }
+        }
+        
+        public static string Scheduler_Pick {
+            get {
+                return ResourceManager.GetString("Scheduler.Pick", resourceCulture);
+            }
+        }
+        
+        public static string Scheduler_ChooseDate {
+            get {
+                return ResourceManager.GetString("Scheduler.ChooseDate", resourceCulture);
+            }
+        }
+        
+        public static string Scheduler_ChooseTime {
+            get {
+                return ResourceManager.GetString("Scheduler.ChooseTime", resourceCulture);
+            }
+        }
+        
+        public static string Scheduler_Notification {
+            get {
+                return ResourceManager.GetString("Scheduler.Notification", resourceCulture);
+            }
+        }
+        
+        public static string Scheduler_Schedule {
+            get {
+                return ResourceManager.GetString("Scheduler.Schedule", resourceCulture);
+            }
+        }
     }
 }

@@ -28,6 +28,11 @@ namespace MoveUp.iOS
             global::Xamarin.Forms.Forms.Init();
             LoadApplication(new App(new List<IInstaller>() { new iOSInstaller() }));
 
+            var notificationSettings = UIUserNotificationSettings.GetSettingsForTypes(
+                                       UIUserNotificationType.Alert | UIUserNotificationType.Badge | UIUserNotificationType.Sound, null);
+
+            app.RegisterUserNotificationSettings(notificationSettings);
+
             return base.FinishedLaunching(app, options);
         }
     }

@@ -14,9 +14,11 @@ namespace MoveUp.ViewModels
         public Views.ActivitiesView ActivitiesPage { get; set; }
 
         public ObservableCollection<HikingSavedData> HikingDataCollection { get; set; } = new ObservableCollection<HikingSavedData>();
+        public ObservableCollection<NotificationData> ScheduledCollection { get; set; } = new ObservableCollection<NotificationData>();
 
         public ICommand ViewHikingDataCom { get; set; }
         public ICommand DeleteHikingDataCom { get; set; }
+        public ICommand ToSchedulerViewCom { get; set; }
 
         private IStorageManager storageManager;
         private IHistoryDataFeeder dataFeeder;
@@ -34,9 +36,11 @@ namespace MoveUp.ViewModels
             commandFactory = commandFac;
 
             HikingDataCollection = new ObservableCollection<HikingSavedData>(storageManager.GetHikingDataTable().ToArray());
+            ScheduledCollection = new ObservableCollection<NotificationData>(storageManager.GetNotifications());
 
             ViewHikingDataCom = commandFactory.CreateCommand<HikingSavedData>(ViewHikingData);
             DeleteHikingDataCom = commandFactory.CreateCommand<HikingSavedData>(DeleteHikingData);
+            ToSchedulerViewCom = commandFactory.CreateCommand(ToSchedulerView);
         }
 
         public void RefreshData()
@@ -60,6 +64,11 @@ namespace MoveUp.ViewModels
                 storageManager.DeleteHikingData(data);
                 HikingDataCollection.Remove(data);
             }
+        }
+
+        private void ToSchedulerView()
+        {
+            navigation.PushAsync<SchedulerViewModel>();
         }
     }
 }

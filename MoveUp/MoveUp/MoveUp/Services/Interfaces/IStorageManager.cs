@@ -15,5 +15,8 @@ namespace MoveUp.Services.Interfaces
 
         void InsertTodaysPositions(List<SavedPosition> data);
         List<SavedPosition> GetTodaysPositions();
+
+        void InsertNotification(NotificationData data);
+        List<NotificationData> GetNotifications();
     }
 }
