@@ -78,9 +78,8 @@
     <Compile Include="CoreMotion\AltitudeController.cs" />
     <Compile Include="CoreMotion\LocationController.cs" />
     <Compile Include="CoreMotion\Extensions\LocationDelegate.cs" />
-    <Compile Include="CoreMotion\ActivityLocationController.cs" />
-    <Compile Include="CoreMotion\Extensions\ActivityLocationDelegate.cs" />
     <Compile Include="Notifications\NotificationsManager.cs" />
+    <Compile Include="ShortcutIdentifier.cs" />
   </ItemGroup>
   <ItemGroup>
     <ImageAsset Include="Assets.xcassets\Flame.imageset\Contents.json">
@@ -166,6 +165,8 @@
     <ImageAsset Include="Assets.xcassets\stop.imageset\Contents.json" />
     <ImageAsset Include="Assets.xcassets\stop.imageset\stop-circle-regular.png" />
     <ImageAsset Include="Assets.xcassets\start.imageset\play-circle-regular.png" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\Contents.json" />
+    <ImageAsset Include="Assets.xcassets\facebook.imageset\fb.png" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -220,5 +221,6 @@
     <Folder Include="Assets.xcassets\start.imageset\" />
     <Folder Include="Assets.xcassets\stop.imageset\" />
     <Folder Include="Notifications\" />
+    <Folder Include="Assets.xcassets\facebook.imageset\" />
   </ItemGroup>
 </Project>

@@ -53,12 +53,6 @@ namespace MoveUp.ViewModels
                 Map.MoveToRegion(new MapSpan(RealtimePolyline.Polyline.Geopath[RealtimePolyline.Polyline.Geopath.Count - 1], 0.01, 0.01));
         }
 
-        public void SavePolyline()
-        {
-            List<Position> positions = new List<Position>(RealtimePolyline.Polyline.Geopath);
-            storageManager.InsertTodaysPositions(positions.Select(position => new SavedPosition(position)).ToList());
-        }
-
         private async void InitializeMotionAsync()
         {
             await motionController.TriggerPedometerAsync();

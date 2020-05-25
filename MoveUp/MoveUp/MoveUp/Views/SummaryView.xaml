@@ -137,7 +137,7 @@
             </StackLayout>
 
             <StackLayout Grid.Column="2" Style="{StaticResource NavBarStackLayoutStyle}">
-                <ImageButton Style="{StaticResource NavBarFriends}"/>
+                <ImageButton Style="{StaticResource NavBarFriends}" Command="{Binding ToFriendsViewCom}"/>
                 <Label Text="{x:Static resources:Texts.NaviBar_Friends}" Style="{StaticResource NavBarTextStyle}"/>
             </StackLayout>
         </Grid>

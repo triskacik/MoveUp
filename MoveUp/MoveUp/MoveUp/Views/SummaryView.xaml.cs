@@ -22,7 +22,6 @@ namespace MoveUp.Views
         protected override void OnDisappearing()
         {
             base.OnDisappearing();
-            vm.SavePolyline();
         }
     }
 }

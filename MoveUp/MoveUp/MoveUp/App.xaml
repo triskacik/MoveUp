@@ -318,6 +318,10 @@
                 <Setter Property="Source" Value="cycling"/>
             </Style>
 
+            <Style x:Key="FacebookIcon" TargetType="Image" BasedOn="{StaticResource ActivitiesImage}">
+                <Setter Property="Source" Value="facebook"/>
+            </Style>
+
             <!-- Image Buttons Here -->
 
             <Style x:Key="ImageButtonBase" TargetType="ImageButton">

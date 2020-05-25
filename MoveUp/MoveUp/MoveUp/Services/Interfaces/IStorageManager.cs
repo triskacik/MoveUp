@@ -13,8 +13,9 @@ namespace MoveUp.Services.Interfaces
         void InsertHikingData(HikingSavedData data);
         void DeleteHikingData(HikingSavedData data);
 
-        void InsertTodaysPositions(List<SavedPosition> data);
         List<SavedPosition> GetTodaysPositions();
+        void CachePosition(SavedPosition data);
+        void SavePositionsCache();
 
         void InsertNotification(NotificationData data);
         List<NotificationData> GetNotifications();

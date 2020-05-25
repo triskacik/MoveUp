@@ -51,5 +51,38 @@
 	<array>
 		<string>location</string>
 	</array>
+	<key>UIApplicationShortcutItems</key>
+	<array>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeHome</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Opens Summary Page</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Summary</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.MoveUp.000</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypePlay</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Opens Activities Page</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Activities</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.MoveUp.001</string>
+		</dict>
+		<dict>
+			<key>UIApplicationShortcutItemIconType</key>
+			<string>UIApplicationShortcutIconTypeContact</string>
+			<key>UIApplicationShortcutItemSubtitle</key>
+			<string>Opens Friends Page</string>
+			<key>UIApplicationShortcutItemTitle</key>
+			<string>Friends</string>
+			<key>UIApplicationShortcutItemType</key>
+			<string>com.xamarin.MoveUp.002</string>
+		</dict>
+	</array>
 </dict>
 </plist>

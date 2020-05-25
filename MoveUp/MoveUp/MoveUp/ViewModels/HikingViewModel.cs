@@ -40,7 +40,7 @@ namespace MoveUp.ViewModels
         private IStorageManager storage;
         private INavigationService navigation;
         private IHistoryDataFeeder dataFeeder;
-        private IActivityLocationController activityLocationController;
+        private ILocationController locationController;
 
         public HikingViewModel(ICommandFactory commandFactory,
                                INavigationService navigationService,
@@ -49,7 +49,7 @@ namespace MoveUp.ViewModels
                                ITimerService timerService,
                                IStorageManager storageManager,
                                IHistoryDataFeeder feeder,
-                               IActivityLocationController activityLocation) : base(navigationService, commandFactory)
+                               ILocationController location) : base(navigationService, commandFactory)
         {
             motionController = coreMotionController;
             altitudeController = altitudeContr;
@@ -57,7 +57,7 @@ namespace MoveUp.ViewModels
             storage = storageManager;
             navigation = navigationService;
             dataFeeder = feeder;
-            activityLocationController = activityLocation;
+            locationController = location;
 
             TimerData = timer.GetTimerData();
 
@@ -77,8 +77,10 @@ namespace MoveUp.ViewModels
             altitudeController.TriggerActivity();
             AltitudeData = altitudeController.GetData();
 
-            activityLocationController.StartUpdates();
             InitializeMap();
+            locationController.StartActivityUpdates(Map);
+            Polyline = locationController.GetActivityPolyline();
+            Map.MapElements.Add(Polyline.Polyline);
 
             HeaderColor = Color.Green;
             Opacity = 1;
@@ -97,6 +99,8 @@ namespace MoveUp.ViewModels
 
             ActivityData = new CoreActivityData();
             AltitudeData = new AltitudeData();
+
+            locationController.StopActivityUpdates();
 
             HeaderColor = Color.Red;
             Opacity = 0.2;
@@ -128,10 +132,6 @@ namespace MoveUp.ViewModels
             Map.MapType = MapType.Hybrid;
             Map.IsShowingUser = true;
             Map.HasZoomEnabled = true;
-
-            Polyline = activityLocationController.GetPolyline();
-            Map.MapElements.Add(Polyline.Polyline);
-            activityLocationController.SetDelegateMap(Map);
         }
     }
 }

@@ -13,10 +13,12 @@ namespace MoveUp.iOS.CoreMotion
         private bool isCountingAvailable = false;
         private CLLocationManager locationManager;
 
-        public LocationDelegate LocationDelegate { get; set; } = new LocationDelegate();
+        public LocationDelegate LocationDelegate { get; set; } 
 
-        public LocationController()
+        public LocationController(IStorageManager storage)
         {
+            LocationDelegate = new LocationDelegate(storage);
+
             if (CLLocationManager.SignificantLocationChangeMonitoringAvailable)
             { 
                 locationManager = new CLLocationManager();
@@ -40,10 +42,30 @@ namespace MoveUp.iOS.CoreMotion
             return LocationDelegate.Polyline;
         }
 
+        public LocationPolyline GetActivityPolyline()
+        {
+            return LocationDelegate.ActivityPolyline;
+        }
+
         public void InitializePolyline(List<Position> positions)
         {
             LocationDelegate.Polyline.Polyline.Geopath.Clear();
             positions.ForEach(position => LocationDelegate.Polyline.Polyline.Geopath.Add(position));
+        }
+
+        public void StartActivityUpdates(Map map)
+        {
+            locationManager.DistanceFilter = 5;
+            StartUpdates();
+            LocationDelegate.ActivityPolyline = new LocationPolyline();
+            LocationDelegate.ActivityMap = map;
+            LocationDelegate.ActivityRunning = true;
+        }
+
+        public void StopActivityUpdates()
+        {
+            locationManager.DistanceFilter = 20;
+            LocationDelegate.ActivityRunning = false;
         }
 
         public void SetDelegateMap(Map map)

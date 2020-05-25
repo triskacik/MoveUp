@@ -11,6 +11,8 @@ namespace MoveUp.Services.Interfaces
         private string path;
         public SQLiteConnection connection { get; set; }
 
+        public List<SavedPosition> SavedPositionsCache { get; set; } = new List<SavedPosition>();
+
         public StorageManager()
         {
             path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "database.db3");
@@ -47,22 +49,31 @@ namespace MoveUp.Services.Interfaces
             connection.Delete(data);
         }
 
-        public void InsertTodaysPositions(List<SavedPosition> data)
-        {
-            var query = connection.Table<SavedPosition>();
-            connection.DeleteAll(query.Table);
-            connection.InsertAll(data);
-        }
-
         public List<SavedPosition> GetTodaysPositions()
         {
             var query = connection.Table<SavedPosition>();
             if (query.Count() > 0)
             {
-                if(query.First().Date.Date != DateTime.Now.Date)
+                if (query.First().Date.Date != DateTime.Now.Date)
                     connection.DeleteAll(query.Table);
             }
             return query.ToList();
+        }
+
+        public void CachePosition(SavedPosition data)
+        {
+            if (SavedPositionsCache.Count > 10)
+            {
+                SavePositionsCache();
+                SavedPositionsCache.Clear();
+            }
+            SavedPositionsCache.Add(data);
+        }
+
+        public void SavePositionsCache()
+        {
+            connection.InsertAll(SavedPositionsCache);
+            SavedPositionsCache.Clear();
         }
 
         public void InsertNotification(NotificationData data)

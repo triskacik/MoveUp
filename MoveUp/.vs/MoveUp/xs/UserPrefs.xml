@@ -1,5 +1,9 @@
 ﻿<Properties StartupConfiguration="{1B042AE1-EDE2-47E5-A368-789F87CDC878}|Default" NuGet.AddPackagesDialog.IncludePrerelease="True">
-  <MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.Workbench ActiveDocument="MoveUp/MoveUp/Views/FriendsView.xaml">
+    <Files>
+      <File FileName="MoveUp/MoveUp/Views/FriendsView.xaml" Line="36" Column="79" />
+      <File FileName="MoveUp/MoveUp/App.xaml.cs" Line="48" Column="54" />
+    </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
@@ -12,9 +16,9 @@
               </Node>
               <Node name="ViewModels" expanded="True">
                 <Node name="Base" expanded="True" />
-                <Node name="ActivitiesViewModel.cs" selected="True" />
               </Node>
               <Node name="Views" expanded="True">
+                <Node name="FriendsView.xaml" expanded="True" selected="True" />
                 <Node name="HikingView.xaml" expanded="True" />
                 <Node name="SchedulerView.xaml" expanded="True" />
                 <Node name="SummaryView.xaml" expanded="True" />
@@ -22,6 +26,9 @@
               <Node name="App.xaml" expanded="True" />
             </Node>
             <Node name="MoveUp.iOS" expanded="True">
+              <Node name="CoreMotion" expanded="True">
+                <Node name="Extensions" expanded="True" />
+              </Node>
               <Node name="Notifications" expanded="True" />
             </Node>
           </Node>
@@ -30,11 +37,11 @@
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.DebuggingService.PinnedWatches />
-  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release|iPhoneSimulator" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Release" />
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
-  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneSimulatorTarget.EE2D6548-F041-4A8D-9D45-CFAD51A81CE1" />
+  <MonoDevelop.Ide.ItemProperties.MoveUp.iOS Xamarin.HotReload.UnhandledDeviceException.MoveUp.iOS.HideInfoBar="True" automaticSigning="False" PreferredExecutionTarget="MonoDevelop.IPhone.IPhoneDeviceTarget.00008020-000515861A86002E" />
   <MonoDevelop.Ide.ItemProperties.MoveUp.Android PreferredExecutionTarget="Android.SelectDevice" />
 </Properties>

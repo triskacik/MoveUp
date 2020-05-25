@@ -7,6 +7,7 @@ using MoveUp.Installers;
 using MoveUp.Views;
 using System.Collections.Generic;
 using MoveUp.Factories.Interfaces;
+using System;
 
 namespace MoveUp
 {
@@ -14,8 +15,9 @@ namespace MoveUp
     {
         public IDependencyInjectionService MyDependencyService { get; }
 
-        public App(IEnumerable<IInstaller> remoteInstallers = null)
+        public App(IEnumerable<IInstaller> remoteInstallers = null, int startupPage = 0)
         {
+            Console.WriteLine("Got: " + startupPage);
             InitializeComponent();
 
             MyDependencyService = new DependencyInjectionService();
@@ -23,7 +25,13 @@ namespace MoveUp
 
             RegisterDependencies(MyDependencyService, navigationPage.Navigation, remoteInstallers);
             var navigationService = MyDependencyService.Resolve<INavigationService>();
-            navigationService.PushAsync<SummaryViewModel>();
+
+            if (startupPage == 0 || startupPage == 1)
+                navigationService.PushAsync<SummaryViewModel>();
+            else if (startupPage == 2)
+                navigationService.PushAsync<ActivitiesViewModel>();
+            else if (startupPage == 3)
+                navigationService.PushAsync<FriendsViewModel>();
 
             MainPage = navigationPage;
         }
@@ -50,6 +58,7 @@ namespace MoveUp
         protected override void OnSleep()
         {
             MyDependencyService.Resolve<ITimerService>().StopTimer();
+            MyDependencyService.Resolve<IStorageManager>().SavePositionsCache();
         }
 
         protected override void OnResume()

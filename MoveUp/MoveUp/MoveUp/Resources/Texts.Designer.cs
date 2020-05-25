@@ -400,5 +400,17 @@ namespace MoveUp.Resources {
                 return ResourceManager.GetString("Scheduler.Schedule", resourceCulture);
             }
         }
+        
+        public static string Friends_Header {
+            get {
+                return ResourceManager.GetString("Friends.Header", resourceCulture);
+            }
+        }
+        
+        public static string Friends_Link {
+            get {
+                return ResourceManager.GetString("Friends.Link", resourceCulture);
+            }
+        }
     }
 }

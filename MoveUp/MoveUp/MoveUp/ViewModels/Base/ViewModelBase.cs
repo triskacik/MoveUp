@@ -15,6 +15,7 @@ namespace MoveUp.ViewModels.Base
 
         public ICommand ToSummaryViewCom { get; set; }
         public ICommand ToActivitiesViewCom { get; set; }
+        public ICommand ToFriendsViewCom { get; set; }
 
         public ICommand ToStepsViewCom { get; set; }
         public ICommand ToDistanceViewCom { get; set; }
@@ -30,6 +31,7 @@ namespace MoveUp.ViewModels.Base
 
             ToSummaryViewCom = commandFactory.CreateCommand(ToSummaryView);
             ToActivitiesViewCom = commandFactory.CreateCommand(ToActivitiesView);
+            ToFriendsViewCom = commandFactory.CreateCommand(ToFriendsView);
 
             ToStepsViewCom = commandFactory.CreateCommand(ToStepsView);
             ToDistanceViewCom = commandFactory.CreateCommand(ToDistanceView);
@@ -52,6 +54,11 @@ namespace MoveUp.ViewModels.Base
         private void ToActivitiesView()
         {
             navigationService.PushAsync<ActivitiesViewModel>();
+        }
+
+        private void ToFriendsView()
+        {
+            navigationService.PushAsync<FriendsViewModel>();
         }
 
         private void ToStepsView()

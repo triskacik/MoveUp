@@ -11,5 +11,9 @@ namespace MoveUp.Services.Interfaces
         LocationPolyline GetPolyline();
         void SetDelegateMap(Map map);
         void InitializePolyline(List<Position> positions);
+
+        LocationPolyline GetActivityPolyline();
+        void StartActivityUpdates(Map map);
+        void StopActivityUpdates();
     }
 }

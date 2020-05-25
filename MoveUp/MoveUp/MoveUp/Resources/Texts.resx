@@ -310,4 +310,11 @@
   <data name="Scheduler.Schedule" xml:space="preserve">
     <value>Schedule</value>
   </data>
+    
+  <data name="Friends.Header" xml:space="preserve">
+    <value>Friends</value>
+  </data>
+  <data name="Friends.Link" xml:space="preserve">
+    <value>Link the app to your Facebook account to continue</value>
+  </data>
 </root>
