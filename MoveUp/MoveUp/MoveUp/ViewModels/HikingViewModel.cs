@@ -110,6 +110,11 @@ namespace MoveUp.ViewModels
             IsStopped = true;
         }
 
+        public void OnAppearing()
+        {
+            timer.ResumeTimer();
+        }
+
         public async void FinishActivity()
         {
             bool finish = await HikingPage.DisplayPopup();

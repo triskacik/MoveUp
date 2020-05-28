@@ -195,13 +195,13 @@
 
             <Style x:Key="SmallTextBlack" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource PrimaryTextColor}"/>
-                <Setter Property="FontSize" Value="{StaticResource PrimaryTextSize}"/>
+                <Setter Property="FontSize" Value="{StaticResource SecondaryTextSize}"/>
                 <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
             </Style>
 
             <Style x:Key="SmallTextGrey" TargetType="Label">
                 <Setter Property="TextColor" Value="{StaticResource SecondaryTextColor}"/>
-                <Setter Property="FontSize" Value="{StaticResource PrimaryTextSize}"/>
+                <Setter Property="FontSize" Value="{StaticResource SecondaryTextSize}"/>
                 <Setter Property="FontFamily" Value="{StaticResource RegularFont}"/>
             </Style>
 

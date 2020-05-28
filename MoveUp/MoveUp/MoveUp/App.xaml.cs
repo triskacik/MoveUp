@@ -17,7 +17,6 @@ namespace MoveUp
 
         public App(IEnumerable<IInstaller> remoteInstallers = null, int startupPage = 0)
         {
-            Console.WriteLine("Got: " + startupPage);
             InitializeComponent();
 
             MyDependencyService = new DependencyInjectionService();

@@ -24,6 +24,12 @@ namespace MoveUp.Views
             vm.StopActivity();
         }
 
+        protected override void OnAppearing()
+        {
+            base.OnAppearing();
+            vm.OnAppearing();
+        }
+
         public async Task<bool> DisplayPopup()
         {
             return await DisplayAlert("Finish", "Do you really want to finish the activity?", "Yes", "No");

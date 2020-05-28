@@ -10,8 +10,8 @@ namespace MoveUp.Models
 
         public LocationPolyline()
         {
-            Polyline.StrokeColor = Color.Blue;
-            Polyline.StrokeWidth = 12;
+            Polyline.StrokeColor = Color.FromHex("#007AFF");
+            Polyline.StrokeWidth = 10;
         }
 
         public void AddData(Position position)
